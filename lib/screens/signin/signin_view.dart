@@ -120,14 +120,13 @@ class _SignInViewState extends State<SignInView> {
                             child: StyledButton(
                               text: "Submit",
                               color: Colors.teal,
-                              onClick: () {
-                                BlocProvider.of<SignInBloc>(context).add(
-                                  SignInSuccessEvent(
-                                    _emailController.text,
-                                    _passwordController.text,
-                                  ),
-                                );
-                              },
+                              onClick: () =>
+                                  BlocProvider.of<SignInBloc>(context).add(
+                                SignInSuccessEvent(
+                                  _emailController.text,
+                                  _passwordController.text,
+                                ),
+                              ),
                             ),
                           );
                         },

@@ -1,3 +1,4 @@
+import 'package:chamting_app/screens/signup/signup_bloc/sign_up_bloc.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,8 +44,15 @@ class _SignUpViewState extends State<SignUpView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ValidatorBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ValidatorBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SignUpBloc(),
+        ),
+      ],
       child: ScaffoldPage(
         padding: EdgeInsets.zero,
         header: const WindowsTitleBar(requiredBackButton: true),
@@ -174,7 +182,14 @@ class _SignUpViewState extends State<SignUpView> {
                       StyledButton(
                         text: "Submit",
                         color: Colors.teal,
-                        onClick: null,
+                        onClick: () => BlocProvider.of<SignUpBloc>(context).add(
+                          SignUpSuccessEvent(
+                            email: _emailController.text,
+                            name: _nameController.text,
+                            userName: _userNameController.text,
+                            pass: _passwordController.text,
+                          ),
+                        ),
                       ),
                     ],
                   ),
