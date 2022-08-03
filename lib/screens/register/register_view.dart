@@ -3,6 +3,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import '../../comman/widgets/button/styled_button.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
 import '../signin/signin_view.dart';
+import '../signup/signup_view.dart';
 
 //RegisterView to show the signup and signin button
 class RegisterView extends StatelessWidget {
@@ -40,6 +41,8 @@ class RegisterView extends StatelessWidget {
                 StyledButton(
                   text: "SignUp",
                   color: Colors.teal,
+                  onClick: () =>
+                      Navigator.of(context).pushNamed(SignUpView.routeName),
                 )
               ],
             ),

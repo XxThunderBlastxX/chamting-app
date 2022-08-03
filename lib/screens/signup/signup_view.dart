@@ -6,15 +6,17 @@ import '../../comman/widgets/button/styled_button.dart';
 import '../../comman/widgets/form_text_box/form_text_box.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
 
-class SignInView extends StatelessWidget {
-  static const routeName = "/signin";
+class SignUpView extends StatelessWidget {
+  static const routeName = "/signup";
 
-  final GlobalKey<FormState> _signinFormKey = GlobalKey();
+  final GlobalKey<FormState> _signupFormKey = GlobalKey();
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
-  SignInView({Key? key}) : super(key: key);
+  SignUpView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class SignInView extends StatelessWidget {
             vertical: 0.0,
           ),
           child: Form(
-            key: _signinFormKey,
+            key: _signupFormKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -41,7 +43,7 @@ class SignInView extends StatelessWidget {
                     bottom: 21.0,
                   ),
                   child: Text(
-                    "SignIn",
+                    "SignUp",
                     style: HeadingTextStyle(
                       size: TextSize.large,
                       weight: FontWeight.w700,
@@ -50,13 +52,28 @@ class SignInView extends StatelessWidget {
                   ),
                 ),
                 FormTextBox(
+                  headerText: "Name",
+                  placeholderText: "Enter your name",
+                  textController: _nameController,
+                ),
+                FormTextBox(
+                  headerText: "Username",
+                  placeholderText: "Enter your username",
+                  textController: _passwordController,
+                ),
+                FormTextBox(
                   headerText: "Email",
-                  placeholderText: "Enter your Email",
+                  placeholderText: "Enter your email",
                   textController: _emailController,
                 ),
                 FormTextBox(
                   headerText: "Password",
-                  placeholderText: "Enter your Password",
+                  placeholderText: "Enter your password",
+                  textController: _passwordController,
+                ),
+                FormTextBox(
+                  headerText: "Rewrite - Password",
+                  placeholderText: "Enter your password again",
                   textController: _passwordController,
                 ),
                 StyledButton(

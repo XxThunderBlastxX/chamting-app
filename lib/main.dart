@@ -1,8 +1,9 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:chamting_app/screens/signin/signin_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 import 'screens/register/register_view.dart';
+import 'screens/signin/signin_view.dart';
+import 'screens/signup/signup_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       routes: {
         RegisterView.routeName: (context) => const RegisterView(),
         SignInView.routeName: (context) => SignInView(),
+        SignUpView.routeName: (context) => SignUpView(),
       },
     );
   }
