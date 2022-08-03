@@ -25,11 +25,14 @@ class MyApp extends StatelessWidget {
     return FluentApp(
       debugShowCheckedModeBanner: false,
       title: 'Chamting',
-      // home: HomeScreen(),
+      theme: ThemeData(
+        activeColor: Colors.teal,
+        accentColor: Colors.teal,
+      ),
       initialRoute: RegisterView.routeName,
       routes: {
         RegisterView.routeName: (context) => const RegisterView(),
-        SignInView.routeName: (context) => const SignInView(),
+        SignInView.routeName: (context) => SignInView(),
       },
     );
   }

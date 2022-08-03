@@ -1,8 +1,8 @@
-import 'package:chamting_app/screens/signin/signin_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 import '../../comman/widgets/button/styled_button.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
+import '../signin/signin_view.dart';
 
 //RegisterView to show the signup and signin button
 class RegisterView extends StatelessWidget {

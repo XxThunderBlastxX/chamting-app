@@ -1,3 +1,5 @@
+import 'package:chamting_app/comman/textStyles/body_text_style.dart';
+import 'package:chamting_app/comman/textStyles/text_style.dart';
 import 'package:flutter/material.dart';
 
 class StyledButton extends StatelessWidget {
@@ -21,7 +23,13 @@ class StyledButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.5),
         side: const BorderSide(color: Colors.black26),
       ),
-      child: Text(text as String),
+      child: Text(
+        text as String,
+        style: BodyTextStyle(
+          size: TextSize.medium,
+          weight: FontWeight.w500,
+        ),
+      ),
     );
   }
 }
