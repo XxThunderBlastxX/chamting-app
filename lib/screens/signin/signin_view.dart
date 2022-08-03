@@ -8,6 +8,7 @@ import '../../comman/textStyles/text_style.dart';
 import '../../comman/widgets/button/styled_button.dart';
 import '../../comman/widgets/form_text_box/form_text_box.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
+import 'signin_bloc/sign_in_bloc.dart';
 
 class SignInView extends StatefulWidget {
   static const routeName = "/signin";
@@ -34,8 +35,15 @@ class _SignInViewState extends State<SignInView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ValidatorBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ValidatorBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SignInBloc(),
+        ),
+      ],
       child: ScaffoldPage(
         padding: EdgeInsets.zero,
         header: const WindowsTitleBar(requiredBackButton: true),
@@ -105,13 +113,24 @@ class _SignInViewState extends State<SignInView> {
                               ),
                             )
                           : const SizedBox(),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 18.0),
-                        child: StyledButton(
-                          text: "Submit",
-                          color: Colors.teal,
-                          onClick: null,
-                        ),
+                      BlocBuilder<SignInBloc, SignInState>(
+                        builder: (context, state) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 18.0),
+                            child: StyledButton(
+                              text: "Submit",
+                              color: Colors.teal,
+                              onClick: () {
+                                BlocProvider.of<SignInBloc>(context).add(
+                                  SignInSuccessEvent(
+                                    _emailController.text,
+                                    _passwordController.text,
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
