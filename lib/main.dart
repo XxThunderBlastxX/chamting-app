@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
       initialRoute: RegisterView.routeName,
       routes: {
         RegisterView.routeName: (context) => const RegisterView(),
-        SignInView.routeName: (context) => SignInView(),
-        SignUpView.routeName: (context) => SignUpView(),
+        SignInView.routeName: (context) => const SignInView(),
+        SignUpView.routeName: (context) => const SignUpView(),
       },
     );
   }
