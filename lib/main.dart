@@ -1,4 +1,5 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:chamting_app/screens/signin/signin_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 import 'screens/register/register_view.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       initialRoute: RegisterView.routeName,
       routes: {
         RegisterView.routeName: (context) => const RegisterView(),
+        SignInView.routeName: (context) => const SignInView(),
       },
     );
   }

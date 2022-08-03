@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class StyledButton extends StatelessWidget {
   final String? text;
   final Color? color;
-  final Function? onClick;
+  final Function()? onClick;
 
   const StyledButton({
     Key? key,
@@ -15,7 +15,7 @@ class StyledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      onPressed: () => onClick,
+      onPressed: onClick,
       fillColor: color,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.5),
