@@ -7,4 +7,10 @@ class SignInInitial extends SignInState {}
 
 class SignInSuccessState extends SignInState {}
 
-class SignInErrState extends SignInState {}
+class SignInErrState extends SignInState {
+  final String? errMsg;
+
+  SignInErrState({this.errMsg});
+}
+
+class SignInLoadingState extends SignInState {}

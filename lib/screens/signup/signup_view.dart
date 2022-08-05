@@ -1,4 +1,3 @@
-import 'package:chamting_app/screens/signup/signup_bloc/sign_up_bloc.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,8 +6,12 @@ import '../../comman/textStyles/body_text_style.dart';
 import '../../comman/textStyles/heading_text_style.dart';
 import '../../comman/textStyles/text_style.dart';
 import '../../comman/widgets/button/styled_button.dart';
+import '../../comman/widgets/error_snackbar/error_snackbar.dart';
 import '../../comman/widgets/form_text_box/form_text_box.dart';
+import '../../comman/widgets/loading/loading.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
+import '../home/home_view.dart';
+import 'signup_bloc/sign_up_bloc.dart';
 
 class SignUpView extends StatefulWidget {
   static const routeName = "/signup";
@@ -56,145 +59,158 @@ class _SignUpViewState extends State<SignUpView> {
       child: ScaffoldPage(
         padding: EdgeInsets.zero,
         header: const WindowsTitleBar(requiredBackButton: true),
-        content: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 21.0,
-            vertical: 8.0,
-          ),
+        content: BlocListener<SignUpBloc, SignUpState>(
+          listener: (context, state) {
+            if (state is SignUpLoadingState) {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return LoadingWindow();
+                  });
+            } else if (state is SignUpSuccessEvent) {
+              Navigator.of(context).pushNamed(HomeView.routeName);
+            } else if (state is SignUpErrState) {
+              Navigator.of(context).pop();
+              showSnackbar(context, ErrSnackBar(err: state.err));
+            }
+          },
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.3,
-              vertical: 0.0,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 21.0,
+              vertical: 8.0,
             ),
-            child: BlocBuilder<ValidatorBloc, ValidatorState>(
-              builder: (context, state) {
-                return Form(
-                  key: _signupFormKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 21.0,
-                        ),
-                        child: Text(
-                          "SignUp",
-                          style: HeadingTextStyle(
-                            size: TextSize.large,
-                            weight: FontWeight.w700,
-                            letterSpacing: 1.2,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.3,
+                vertical: 0.0,
+              ),
+              child: BlocBuilder<ValidatorBloc, ValidatorState>(
+                builder: (context, state) {
+                  return Form(
+                    key: _signupFormKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            bottom: 21.0,
+                          ),
+                          child: Text(
+                            "SignUp",
+                            style: HeadingTextStyle(
+                              size: TextSize.large,
+                              weight: FontWeight.w700,
+                              letterSpacing: 1.2,
+                            ),
                           ),
                         ),
-                      ),
-                      FormTextBox(
-                        headerText: "Name",
-                        placeholderText: "Enter your name",
-                        textController: _nameController,
-                        validator: (_) =>
-                            BlocProvider.of<ValidatorBloc>(context).add(
-                          NameValidatorEvent(_nameController.text),
-                        ),
-                      ),
-                      state is NameValidatorState
-                          ? Text(
-                              state.err,
-                              style: BodyTextStyle(
-                                size: TextSize.small,
-                                color: Colors.red,
+                        FormTextBox(
+                          headerText: "Name",
+                          placeholderText: "Enter your name",
+                          textController: _nameController,
+                          validator: (_) => context.read<ValidatorBloc>().add(
+                                NameValidatorEvent(_nameController.text),
                               ),
-                            )
-                          : const SizedBox(),
-                      FormTextBox(
-                        headerText: "Username",
-                        placeholderText: "Enter your username",
-                        textController: _userNameController,
-                        validator: (_) =>
-                            BlocProvider.of<ValidatorBloc>(context).add(
-                          PasswordValidatorEvent(_passwordController.text),
                         ),
-                      ),
-                      state is UsernameValidatorState
-                          ? Text(
-                              state.err,
-                              style: BodyTextStyle(
-                                size: TextSize.small,
-                                color: Colors.red,
+                        state is NameValidatorState
+                            ? Text(
+                                state.err,
+                                style: BodyTextStyle(
+                                  size: TextSize.small,
+                                  color: Colors.red,
+                                ),
+                              )
+                            : const SizedBox(),
+                        FormTextBox(
+                          headerText: "Username",
+                          placeholderText: "Enter your username",
+                          textController: _userNameController,
+                          validator: (_) => context.read<ValidatorBloc>().add(
+                                UsernameValidatorEvent(
+                                    _userNameController.text),
                               ),
-                            )
-                          : const SizedBox(),
-                      FormTextBox(
-                        headerText: "Email",
-                        placeholderText: "Enter your email",
-                        textController: _emailController,
-                        validator: (_) =>
-                            BlocProvider.of<ValidatorBloc>(context).add(
-                          EmailValidatorEvent(_emailController.text),
                         ),
-                      ),
-                      state is EmailValidatorState
-                          ? Text(
-                              state.err,
-                              style: BodyTextStyle(
-                                size: TextSize.small,
-                                color: Colors.red,
+                        state is UsernameValidatorState
+                            ? Text(
+                                state.err,
+                                style: BodyTextStyle(
+                                  size: TextSize.small,
+                                  color: Colors.red,
+                                ),
+                              )
+                            : const SizedBox(),
+                        FormTextBox(
+                          headerText: "Email",
+                          placeholderText: "Enter your email",
+                          textController: _emailController,
+                          validator: (_) => context.read<ValidatorBloc>().add(
+                                EmailValidatorEvent(_emailController.text),
                               ),
-                            )
-                          : const SizedBox(),
-                      FormTextBox(
-                        headerText: "Password",
-                        placeholderText: "Enter your password",
-                        textController: _passwordController,
-                        validator: (_) =>
-                            BlocProvider.of<ValidatorBloc>(context).add(
-                          PasswordValidatorEvent(_passwordController.text),
                         ),
-                      ),
-                      state is PasswordValidatorState
-                          ? Text(
-                              state.err,
-                              style: BodyTextStyle(
-                                size: TextSize.small,
-                                color: Colors.red,
+                        state is EmailValidatorState
+                            ? Text(
+                                state.err,
+                                style: BodyTextStyle(
+                                  size: TextSize.small,
+                                  color: Colors.red,
+                                ),
+                              )
+                            : const SizedBox(),
+                        FormTextBox(
+                          headerText: "Password",
+                          placeholderText: "Enter your password",
+                          textController: _passwordController,
+                          validator: (_) => context.read<ValidatorBloc>().add(
+                                PasswordValidatorEvent(
+                                    _passwordController.text),
                               ),
-                            )
-                          : const SizedBox(),
-                      FormTextBox(
-                        headerText: "Rewrite - Password",
-                        placeholderText: "Enter your password again",
-                        textController: _rewritePassController,
-                        validator: (_) =>
-                            BlocProvider.of<ValidatorBloc>(context).add(
-                          RewritePasswordEvent(
-                            _passwordController.text,
-                            _rewritePassController.text,
-                          ),
                         ),
-                      ),
-                      state is ReWritePassState
-                          ? Text(
-                              state.err,
-                              style: BodyTextStyle(
-                                size: TextSize.small,
-                                color: Colors.red,
+                        state is PasswordValidatorState
+                            ? Text(
+                                state.err,
+                                style: BodyTextStyle(
+                                  size: TextSize.small,
+                                  color: Colors.red,
+                                ),
+                              )
+                            : const SizedBox(),
+                        FormTextBox(
+                          headerText: "Confirm Password",
+                          placeholderText: "Confirm your password",
+                          textController: _rewritePassController,
+                          validator: (_) => context.read<ValidatorBloc>().add(
+                                RewritePasswordEvent(
+                                  _passwordController.text,
+                                  _rewritePassController.text,
+                                ),
                               ),
-                            )
-                          : const SizedBox(),
-                      StyledButton(
-                        text: "Submit",
-                        color: Colors.teal,
-                        onClick: () => BlocProvider.of<SignUpBloc>(context).add(
-                          SignUpSuccessEvent(
-                            email: _emailController.text,
-                            name: _nameController.text,
-                            userName: _userNameController.text,
-                            pass: _passwordController.text,
-                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              },
+                        state is ReWritePassState
+                            ? Text(
+                                state.err,
+                                style: BodyTextStyle(
+                                  size: TextSize.small,
+                                  color: Colors.red,
+                                ),
+                              )
+                            : const SizedBox(),
+                        StyledButton(
+                          text: "Submit",
+                          color: Colors.teal,
+                          onClick: () => context.read<SignUpBloc>().add(
+                                SignUpSuccessEvent(
+                                  email: _emailController.text,
+                                  name: _nameController.text,
+                                  userName: _userNameController.text,
+                                  pass: _passwordController.text,
+                                ),
+                              ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ),
