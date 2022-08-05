@@ -11,7 +11,7 @@ class RegisterRepository {
   RegisterRepository({this.baseUrl});
 
   //signInRepository is a function to send email and password to server
-  Future<String?> signInRepository(String email, String pass) async {
+  Future<bool> signInRepository(String email, String pass) async {
     Map<String, String> data = {"email": email, "password": pass};
     try {
       //response variable to post data to server
@@ -19,32 +19,29 @@ class RegisterRepository {
         "$baseUrl/auth/signin",
         data: data,
       );
-
-      print(res.data);
-
-      switch (res.statusCode) {
-        case 200:
-          return null;
+      if (res.statusCode == 200) {
+        return true;
+      } else {
+        return Future.error("Ops something went wrong !!");
       }
     } on DioError catch (err) {
       switch (err.response!.statusCode) {
         case 422:
-          return "Status unprocessable entity";
+          return Future.error("Status unprocessable entity");
         case 503:
-          return "Server Error encountered !!";
+          return Future.error("Server Error encountered !!");
         case 401:
-          return "Ops!! You enter either wrong Email or Password";
+          return Future.error("Ops!! You enter either wrong Email or Password");
         case 500:
-          return "Server error encountered !!";
+          return Future.error("Server error encountered !!");
         default:
-          return "Ops something went wrong !!";
+          return Future.error("Ops something went wrong !!");
       }
     }
-    return null;
   }
 
   //signUpRepository is a function to send data to server for sign-up
-  Future<String?> signUpRepository({
+  Future<bool> signUpRepository({
     required String email,
     required String pass,
     required String name,
@@ -60,26 +57,24 @@ class RegisterRepository {
       //response variable to post data to server
       var res = await dio.post("$baseUrl/auth/signup", data: data);
 
-      print(res);
-
-      switch (res.statusCode) {
-        case 200:
-          return null;
+      if (res.statusCode == 200) {
+        return true;
+      } else {
+        return Future.error("Ops something went wrong !!");
       }
     } on DioError catch (err) {
       switch (err.response!.statusCode) {
         case 422:
-          return "Status unprocessable entity";
+          return Future.error("Status unprocessable entity");
         case 409:
-          return "Opps!! Email already exist !!";
+          return Future.error("Opps!! Email already exist !!");
         case 503:
-          return "Server error encountered !!";
+          return Future.error("Server error encountered !!");
         case 500:
-          return "Server error encountered !!";
+          return Future.error("Server error encountered !!");
         default:
-          return "Ops something went wrong !!";
+          return Future.error("Ops something went wrong !!");
       }
     }
-    return null;
   }
 }

@@ -11,20 +11,19 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(SignInInitial()) {
     on<SignInSubmitEvent>((event, emit) async {
       emit(SignInLoadingState());
-
-      RegisterRepository regRepo = RegisterRepository(baseUrl: kBaseUrl);
-
-      String? errMsg = await regRepo.signInRepository(
-        event.email.toString(),
-        event.pass.toString(),
-      );
-
-      // print(errMsg);
-
-      if (errMsg == null) {
-        emit(SignInSuccessState());
-      } else {
-        emit(SignInErrState(errMsg: errMsg));
+      try {
+        RegisterRepository regRepo = RegisterRepository(baseUrl: kBaseUrl);
+        bool status = await regRepo.signInRepository(
+          event.email.toString(),
+          event.pass.toString(),
+        );
+        if (status) {
+          emit(SignInSuccessState());
+        } else {
+          emit(SignInErrState(errMsg: "Ops something went wrong !!"));
+        }
+      } catch (e) {
+        emit(SignInErrState(errMsg: e.toString()));
       }
     });
   }

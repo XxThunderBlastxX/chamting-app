@@ -11,18 +11,20 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc() : super(SignUpInitial()) {
     on<SignUpSuccessEvent>((event, emit) async {
       emit(SignUpLoadingState());
-
-      RegisterRepository regRepo = RegisterRepository(baseUrl: kBaseUrl);
-      var errMsg = await regRepo.signUpRepository(
-          email: event.email.toString(),
-          pass: event.pass.toString(),
-          name: event.name.toString(),
-          userName: event.userName.toString());
-
-      if (errMsg == null) {
-        emit(SignUpSuccessState());
-      } else {
-        emit(SignUpErrState(err: errMsg.toString()));
+      try {
+        RegisterRepository regRepo = RegisterRepository(baseUrl: kBaseUrl);
+        bool status = await regRepo.signUpRepository(
+            email: event.email.toString(),
+            pass: event.pass.toString(),
+            name: event.name.toString(),
+            userName: event.userName.toString());
+        if (status) {
+          emit(SignUpSuccessState());
+        } else {
+          emit(SignUpErrState(err: "Ops something went wrong !!"));
+        }
+      } catch (e) {
+        emit(SignUpErrState(err: e.toString()));
       }
     });
   }
