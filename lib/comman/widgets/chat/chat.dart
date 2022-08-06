@@ -1,3 +1,4 @@
+import 'package:chamting_app/comman/widgets/chat/chat_tile.dart';
 import 'package:chamting_app/constants/constants.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -19,7 +20,8 @@ class Chat extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(),
+            const MessageTile(message: "message", sendByMe: false),
+            const MessageTile(message: "message", sendByMe: true),
             Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
@@ -33,7 +35,7 @@ class Chat extends StatelessWidget {
                         placeholder: "Message",
                         placeholderStyle: const TextStyle(fontSize: 15.0),
                         controller: chatTextController,
-                        decoration: const BoxDecoration(color: kTealLight50),
+                        decoration: const BoxDecoration(color: kTeal50),
                       ),
                     ),
                   ),

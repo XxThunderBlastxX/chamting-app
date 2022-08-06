@@ -15,13 +15,13 @@ class ChatPane extends NavigationPane {
             padding: EdgeInsets.symmetric(horizontal: 8.0),
             child: TextBox(
               placeholder: "Search",
-              decoration: BoxDecoration(color: kTealLight50),
+              decoration: BoxDecoration(color: kTeal50),
             ),
           ),
           items: [
             PaneItemSeparator(),
             PaneItem(
-              selectedTileColor: ButtonState.all(kTealLight),
+              selectedTileColor: ButtonState.all(kTeal100),
               icon: const Icon(FluentIcons.people),
               title: const Text('ThunderBlast'),
               infoBadge: const InfoBadge(
@@ -29,7 +29,7 @@ class ChatPane extends NavigationPane {
               ),
             ),
             PaneItem(
-              selectedTileColor: ButtonState.all(kTealLight),
+              selectedTileColor: ButtonState.all(kTeal100),
               icon: const Icon(FluentIcons.people),
               title: const Text('ThunderBlast'),
               infoBadge: const InfoBadge(
@@ -45,7 +45,7 @@ class ChatPane extends NavigationPane {
               onPressed: () {},
               style: ButtonStyle(
                 iconSize: ButtonState.all(16.0),
-                backgroundColor: ButtonState.all(kTealLight50),
+                backgroundColor: ButtonState.all(kTeal50),
                 elevation: ButtonState.all(1.5),
               ),
             ),
