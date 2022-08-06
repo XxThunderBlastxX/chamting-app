@@ -8,7 +8,8 @@ part 'sign_in_event.dart';
 part 'sign_in_state.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc() : super(SignInInitial()) {
+  SignInBloc() : super(SignInInitialState()) {
+    // this method is encountered when SignInSubmitEvent is added to bloc
     on<SignInSubmitEvent>((event, emit) async {
       emit(SignInLoadingState());
       try {
@@ -22,8 +23,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         } else {
           emit(SignInErrState(errMsg: "Ops something went wrong !!"));
         }
-      } catch (e) {
-        emit(SignInErrState(errMsg: e.toString()));
+      } catch (err) {
+        emit(SignInErrState(errMsg: err.toString()));
       }
     });
   }

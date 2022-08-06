@@ -1,6 +1,3 @@
-import 'package:chamting_app/comman/widgets/error_snackbar/error_snackbar.dart';
-import 'package:chamting_app/comman/widgets/loading/loading.dart';
-import 'package:chamting_app/screens/home/home_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,10 +6,14 @@ import '../../comman/textStyles/body_text_style.dart';
 import '../../comman/textStyles/heading_text_style.dart';
 import '../../comman/textStyles/text_style.dart';
 import '../../comman/widgets/button/styled_button.dart';
+import '../../comman/widgets/error_snackbar/error_snackbar.dart';
 import '../../comman/widgets/form_text_box/form_text_box.dart';
+import '../../comman/widgets/loading/loading.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
+import '../home/home_view.dart';
 import 'signin_bloc/sign_in_bloc.dart';
 
+//SignInView is to show signin screen
 class SignInView extends StatefulWidget {
   static const routeName = "/signin";
 

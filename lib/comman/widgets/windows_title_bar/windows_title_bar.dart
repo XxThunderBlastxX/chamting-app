@@ -3,17 +3,30 @@ import 'package:fluent_ui/fluent_ui.dart';
 
 //WindowsTitleBar is the top windows bar to move, minimize, maximize,and close windows
 class WindowsTitleBar extends StatelessWidget {
+  //bool variable when true back button is shown and when false back button is hidden
   final bool? requiredBackButton;
-  const WindowsTitleBar({
-    Key? key,
-    this.requiredBackButton = false,
-  }) : super(key: key);
+
+  //background color of whole bar;
+  final Color? backgroundColor;
+
+  //windows buttons background color
+  final Color? buttonBackgroundColor;
+
+  const WindowsTitleBar(
+      {Key? key,
+      this.requiredBackButton = false,
+      this.backgroundColor,
+      this.buttonBackgroundColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
       height: 40,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+      ),
       child: WindowTitleBarBox(
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -49,7 +62,12 @@ class WindowsTitleBar extends StatelessWidget {
                     : MoveWindow(),
               ),
             ),
-            const WindowsButtons()
+            Acrylic(
+              tint: buttonBackgroundColor,
+              luminosityAlpha: 1,
+              // blurAmount: 120,
+              child: const WindowsButtons(),
+            ),
           ],
         ),
       ),
@@ -59,7 +77,7 @@ class WindowsTitleBar extends StatelessWidget {
 
 //Set the color properties of the Windows Buttons
 final buttonColors = WindowButtonColors(
-    iconNormal: const Color(0xFF805306),
+    iconNormal: Colors.black,
     mouseOver: const Color(0xFFF6A00C),
     mouseDown: const Color(0xFF805306),
     iconMouseOver: const Color(0xFF805306),
@@ -69,7 +87,7 @@ final buttonColors = WindowButtonColors(
 final closeButtonColors = WindowButtonColors(
     mouseOver: const Color(0xFFD32F2F),
     mouseDown: const Color(0xFFB71C1C),
-    iconNormal: const Color(0xFF805306),
+    iconNormal: Colors.black,
     iconMouseOver: Colors.white);
 
 //Windows button to minimize, maximize and close windows

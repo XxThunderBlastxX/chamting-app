@@ -34,6 +34,10 @@ dependencies:
   bitsdojo_window: ^0.1.2
   flutter_bloc: ^8.0.1
   dio: ^4.0.6
+  equatable: ^2.0.3
+  flutter_secure_storage: ^5.1.0
+  jwt_decoder: ^2.0.1
+
 
 
 

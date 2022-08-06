@@ -1,7 +1,9 @@
-import 'package:chamting_app/comman/textStyles/body_text_style.dart';
-import 'package:chamting_app/comman/textStyles/text_style.dart';
 import 'package:flutter/material.dart';
 
+import '../../textStyles/body_text_style.dart';
+import '../../textStyles/text_style.dart';
+
+//StyledButton is a clickable button
 class StyledButton extends StatelessWidget {
   final String? text;
   final Color? color;

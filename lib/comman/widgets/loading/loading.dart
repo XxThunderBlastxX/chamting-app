@@ -3,6 +3,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import '../../textStyles/heading_text_style.dart';
 import '../../textStyles/text_style.dart';
 
+//LoadingWindow is loading widget overlay
 class LoadingWindow extends ContentDialog {
   LoadingWindow({Key? key})
       : super(

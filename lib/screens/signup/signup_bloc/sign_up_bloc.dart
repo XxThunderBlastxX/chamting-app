@@ -8,7 +8,8 @@ part 'sign_up_event.dart';
 part 'sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
-  SignUpBloc() : super(SignUpInitial()) {
+  SignUpBloc() : super(SignUpInitialState()) {
+    // this method is encountered when SignUpSubmitEvent is added to bloc
     on<SignUpSuccessEvent>((event, emit) async {
       emit(SignUpLoadingState());
       try {
@@ -23,8 +24,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         } else {
           emit(SignUpErrState(err: "Ops something went wrong !!"));
         }
-      } catch (e) {
-        emit(SignUpErrState(err: e.toString()));
+      } catch (err) {
+        emit(SignUpErrState(err: err.toString()));
       }
     });
   }

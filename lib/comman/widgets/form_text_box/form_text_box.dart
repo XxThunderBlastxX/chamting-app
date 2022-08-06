@@ -3,6 +3,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import '../../textStyles/body_text_style.dart';
 import '../../textStyles/text_style.dart';
 
+//FormTextBox is a text box input widget
 class FormTextBox extends StatelessWidget {
   final String? headerText;
   final String? placeholderText;

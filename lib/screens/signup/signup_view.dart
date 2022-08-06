@@ -13,6 +13,7 @@ import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
 import '../home/home_view.dart';
 import 'signup_bloc/sign_up_bloc.dart';
 
+//SignUpView is to show signup screen
 class SignUpView extends StatefulWidget {
   static const routeName = "/signup";
 
@@ -47,15 +48,8 @@ class _SignUpViewState extends State<SignUpView> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => ValidatorBloc(),
-        ),
-        BlocProvider(
-          create: (context) => SignUpBloc(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => SignUpBloc(),
       child: ScaffoldPage(
         padding: EdgeInsets.zero,
         header: const WindowsTitleBar(requiredBackButton: true),

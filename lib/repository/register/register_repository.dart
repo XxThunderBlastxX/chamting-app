@@ -1,9 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 //RegisterRepository is a helper class to access http client
 class RegisterRepository {
   //dio client instance
   final dio = Dio();
+
+  //FlutterSecureStorage instance
+  final storage = const FlutterSecureStorage();
 
   //base url of whole url string
   final String? baseUrl;
@@ -13,6 +17,7 @@ class RegisterRepository {
   //signInRepository is a function to send email and password to server
   Future<bool> signInRepository(String email, String pass) async {
     Map<String, String> data = {"email": email, "password": pass};
+
     try {
       //response variable to post data to server
       var res = await dio.post(
@@ -20,6 +25,7 @@ class RegisterRepository {
         data: data,
       );
       if (res.statusCode == 200) {
+        storage.write(key: "token", value: res.data["token"]);
         return true;
       } else {
         return Future.error("Ops something went wrong !!");
@@ -58,6 +64,7 @@ class RegisterRepository {
       var res = await dio.post("$baseUrl/auth/signup", data: data);
 
       if (res.statusCode == 200) {
+        storage.write(key: "token", value: res.data["token"]);
         return true;
       } else {
         return Future.error("Ops something went wrong !!");

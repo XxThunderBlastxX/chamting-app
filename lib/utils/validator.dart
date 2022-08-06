@@ -1,3 +1,5 @@
+import 'package:jwt_decoder/jwt_decoder.dart';
+
 ////// false means quantity is invalid and true means it is valid
 
 //Validates an Email
@@ -40,11 +42,17 @@ bool? validatePassword(String? pass) {
   }
 }
 
-//Validate confirm password
-String? validateConfirmPass(String? pass, String? confirmPass) {
-  if (pass != confirmPass) {
-    return 'Enter a same password as above';
+//validateJwtToken is a method to validate jwt token
+bool validateJwtToken(String? token) {
+  bool hasExpired;
+
+  if (token == null) {
+    hasExpired = true;
   } else {
-    return null;
+    hasExpired = JwtDecoder.isExpired(token);
   }
+
+  // true: if the token is already expired
+  // false: if the token is not expired
+  return hasExpired;
 }
