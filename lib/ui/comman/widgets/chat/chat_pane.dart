@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
-import '../../../constants/constants.dart';
+import '../../../../constants/constants.dart';
 
 class ChatPane extends NavigationPane {
   final int? initialIndex;

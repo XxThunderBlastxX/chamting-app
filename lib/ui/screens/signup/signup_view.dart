@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/validator/validator_bloc.dart';
+import '../../../bloc/validator/validator_bloc.dart';
 import '../../comman/textStyles/body_text_style.dart';
 import '../../comman/textStyles/heading_text_style.dart';
 import '../../comman/textStyles/text_style.dart';

@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
-import '../../../constants/constants.dart';
+import '../../../../constants/constants.dart';
 import 'chat_tile.dart';
 
 class Chat extends StatelessWidget {

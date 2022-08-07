@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../constants/constants.dart';
-import '../../../repository/register/register_repository.dart';
+import '../../../../constants/constants.dart';
+import '../../../../repository/register/register_repository.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';

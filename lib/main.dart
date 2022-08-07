@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/user/user_bloc.dart';
 import 'bloc/validator/validator_bloc.dart';
 import 'constants/constants.dart';
-import 'screens/home/home_view.dart';
-import 'screens/register/register_view.dart';
-import 'screens/signin/signin_view.dart';
-import 'screens/signup/signup_view.dart';
+import 'ui/screens/home/home_view.dart';
+import 'ui/screens/register/register_view.dart';
+import 'ui/screens/signin/signin_view.dart';
+import 'ui/screens/signup/signup_view.dart';
 import 'utils/auth.dart';
 import 'utils/validator.dart';
 

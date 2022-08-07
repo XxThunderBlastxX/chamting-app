@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../bloc/user/user_bloc.dart';
+import '../../../../bloc/user/user_bloc.dart';
 import '../../../screens/register/register_view.dart';
 import '../loading/loading.dart';
 import 'chat.dart';
