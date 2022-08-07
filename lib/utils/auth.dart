@@ -15,8 +15,6 @@ Future<String?> getToken() async {
   return token;
 }
 
-Future<bool> removeToken() async {
+Future<void> removeToken() async {
   await storage.delete(key: "token");
-
-  return true;
 }

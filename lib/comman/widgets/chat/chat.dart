@@ -1,6 +1,7 @@
-import 'package:chamting_app/comman/widgets/chat/chat_tile.dart';
-import 'package:chamting_app/constants/constants.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+
+import '../../../constants/constants.dart';
+import 'chat_tile.dart';
 
 class Chat extends StatelessWidget {
   final TextEditingController chatTextController = TextEditingController();

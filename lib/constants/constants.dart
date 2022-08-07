@@ -1,7 +1,7 @@
 //baseUrl constant
 import 'package:fluent_ui/fluent_ui.dart';
 
-const String kBaseUrl = "";
+const String kBaseUrl = "https://thick-kiwis-reply-103-76-82-185.loca.lt";
 
 //Jwt token variable
 String? kToken;
