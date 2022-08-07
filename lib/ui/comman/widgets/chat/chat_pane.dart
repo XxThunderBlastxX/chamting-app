@@ -22,7 +22,10 @@ class ChatPane extends NavigationPane {
             PaneItemSeparator(),
             PaneItem(
               selectedTileColor: ButtonState.all(kTeal100),
-              icon: const Icon(FluentIcons.people),
+              icon: CircleAvatar(
+                backgroundColor: Colors.teal,
+                radius: 15,
+              ),
               title: const Text('ThunderBlast'),
               infoBadge: const InfoBadge(
                 source: Text('2'),

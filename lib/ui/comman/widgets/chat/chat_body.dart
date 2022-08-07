@@ -16,7 +16,17 @@ class ChatBody extends NavigationBody {
           index: initialIndex,
           children: [
             ScaffoldPage(
-              header: const PageHeader(title: Text("ThunderBlast")),
+              header: PageHeader(
+                title: const Text("ThunderBlast"),
+                leading: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 0.0),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.teal,
+                    radius: 28,
+                  ),
+                ),
+              ),
               content: Chat(),
             ),
             ScaffoldPage(
