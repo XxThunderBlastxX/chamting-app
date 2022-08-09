@@ -2,6 +2,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/connectivity/connectivity_bloc.dart';
 import 'bloc/user/user_bloc.dart';
 import 'bloc/validator/validator_bloc.dart';
 import 'constants/constants.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => ValidatorBloc()),
         BlocProvider(create: (context) => UserBloc()),
+        BlocProvider(create: (context) => ConnectivityBloc())
       ],
       child: FluentApp(
         debugShowCheckedModeBanner: false,
