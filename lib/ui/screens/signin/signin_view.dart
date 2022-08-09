@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../bloc/user/user_bloc.dart';
 import '../../../bloc/validator/validator_bloc.dart';
 import '../../comman/textStyles/body_text_style.dart';
 import '../../comman/textStyles/heading_text_style.dart';
@@ -11,7 +12,6 @@ import '../../comman/widgets/form_text_box/form_text_box.dart';
 import '../../comman/widgets/loading/loading.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
 import '../home/home_view.dart';
-import 'signin_bloc/sign_in_bloc.dart';
 
 //SignInView is to show signin screen
 class SignInView extends StatefulWidget {
@@ -40,18 +40,14 @@ class _SignInViewState extends State<SignInView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignInBloc(),
-      child: BlocListener<SignInBloc, SignInState>(
+      create: (context) => UserBloc(),
+      child: BlocListener<UserBloc, UserState>(
         listener: (context, state) async {
-          if (state is SignInLoadingState) {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  return LoadingWindow();
-                });
+          if (state is UserLoadingState) {
+            showDialog(context: context, builder: (context) => LoadingWindow());
           } else if (state is SignInSuccessState) {
-            Navigator.of(context).pushNamed(HomeView.routeName);
-          } else if (state is SignInErrState) {
+            Navigator.of(context).pushReplacementNamed(HomeView.routeName);
+          } else if (state is UserErrState) {
             Navigator.of(context).pop();
             showSnackbar(context, ErrSnackBar(err: state.errMsg));
           }
@@ -124,22 +120,18 @@ class _SignInViewState extends State<SignInView> {
                                 ),
                               )
                             : const SizedBox(),
-                        BlocBuilder<SignInBloc, SignInState>(
-                          builder: (context, state) {
-                            return Padding(
-                              padding: const EdgeInsets.only(top: 18.0),
-                              child: StyledButton(
-                                text: "Submit",
-                                color: Colors.teal,
-                                onClick: () => context.read<SignInBloc>().add(
-                                      SignInSubmitEvent(
-                                        _emailController.text,
-                                        _passwordController.text,
-                                      ),
-                                    ),
-                              ),
-                            );
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(top: 18.0),
+                          child: StyledButton(
+                            text: "Submit",
+                            color: Colors.teal,
+                            onClick: () => context.read<UserBloc>().add(
+                                  SignInSubmitEvent(
+                                    _emailController.text,
+                                    _passwordController.text,
+                                  ),
+                                ),
+                          ),
                         ),
                       ],
                     ),

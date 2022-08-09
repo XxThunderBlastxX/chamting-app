@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../bloc/user/user_bloc.dart';
 import '../../../bloc/validator/validator_bloc.dart';
 import '../../comman/textStyles/body_text_style.dart';
 import '../../comman/textStyles/heading_text_style.dart';
@@ -11,7 +12,6 @@ import '../../comman/widgets/form_text_box/form_text_box.dart';
 import '../../comman/widgets/loading/loading.dart';
 import '../../comman/widgets/windows_title_bar/windows_title_bar.dart';
 import '../home/home_view.dart';
-import 'signup_bloc/sign_up_bloc.dart';
 
 //SignUpView is to show signup screen
 class SignUpView extends StatefulWidget {
@@ -49,23 +49,20 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignUpBloc(),
+      create: (context) => UserBloc(),
       child: ScaffoldPage(
         padding: EdgeInsets.zero,
         header: const WindowsTitleBar(requiredBackButton: true),
-        content: BlocListener<SignUpBloc, SignUpState>(
+        content: BlocListener<UserBloc, UserState>(
           listener: (context, state) {
-            if (state is SignUpLoadingState) {
+            if (state is UserLoadingState) {
               showDialog(
-                  context: context,
-                  builder: (context) {
-                    return LoadingWindow();
-                  });
-            } else if (state is SignUpSuccessEvent) {
-              Navigator.of(context).pushNamed(HomeView.routeName);
-            } else if (state is SignUpErrState) {
+                  context: context, builder: (context) => LoadingWindow());
+            } else if (state is SignUpSuccessState) {
+              Navigator.of(context).pushReplacementNamed(HomeView.routeName);
+            } else if (state is UserErrState) {
               Navigator.of(context).pop();
-              showSnackbar(context, ErrSnackBar(err: state.err));
+              showSnackbar(context, ErrSnackBar(err: state.errMsg));
             }
           },
           child: Padding(
@@ -191,7 +188,7 @@ class _SignUpViewState extends State<SignUpView> {
                         StyledButton(
                           text: "Submit",
                           color: Colors.teal,
-                          onClick: () => context.read<SignUpBloc>().add(
+                          onClick: () => context.read<UserBloc>().add(
                                 SignUpSuccessEvent(
                                   email: _emailController.text,
                                   name: _nameController.text,
