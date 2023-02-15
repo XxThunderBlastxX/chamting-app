@@ -1,16 +1,43 @@
-# chamting-app
+# Chamting-App 💻
+![](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
-A new Flutter project.
+An windows chatting app build using Flutter and Firebase.
 
-## Getting Started
+## How to setup the project ⚙
 
-This project is a starting point for a Flutter application.
+1. Fork the repository.
+2. Clone the repository.
+ ```shell
+git clone https://github.com/<YOUR_USERNAME>/chamting-app.git
+ ```
+3. Navigate into the project directory.
+ ```shell
+cd chamting-app
+```
+4. Install the dependencies.
+ ```shell
+flutter pub get
+```
+5. Run the project on you local machine.
+```shell
+flutter run -d windows
+```
 
-A few resources to get you started if this is your first Flutter project:
+## How to contribute 🤝
+1. Set up the project in your local device.
+2. Find a relevant issue to work upon or raise one.
+3. Upon being assigned, create a new branch with a relevant name.
+4. Make sure to commit and push your changes to the forked repository.
+```
+git add .
+git commit -m "COMMIT_MESSAGE"
+git push
+```
+5. Make a pull request with proper description and wait for it to get merged.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License 📃
+Copyright © 2022 [ThunderBlast](https://github.com/xXThunderBlastxX).<br/>
+This project is [MIT](LICENCE) licensed.
