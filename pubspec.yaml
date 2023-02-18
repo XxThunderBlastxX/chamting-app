@@ -39,10 +39,13 @@ dependencies:
   jwt_decoder: ^2.0.1
   web_socket_channel: ^2.2.0
   connectivity_plus: ^2.3.6
-
-
-
-
+  flutter_screenutil: ^5.6.1
+  google_fonts: ^4.0.3
+  window_size:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding
+      path: plugins/window_size
+  flutter_svg: ^2.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,9 +69,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+     - assets/
+     
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
