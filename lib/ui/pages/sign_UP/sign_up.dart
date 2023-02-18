@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Onboard_Page extends StatelessWidget {
-  const Onboard_Page({super.key});
+class SignUp_Page extends StatelessWidget {
+  const SignUp_Page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,10 @@ class Onboard_Page extends StatelessWidget {
       builder: (context, child) {
       return Scaffold(
         backgroundColor: Color.fromARGB(255, 179, 179, 194),
-        body: Container(
+       
+        body:
+        
+         Container(
           height: 720.h,
           width: 1480.r,
             child: Padding(
@@ -35,8 +38,12 @@ class Onboard_Page extends StatelessWidget {
                 width: 300.w,
                 alignment: Alignment.centerRight,
 
-                child: Column(
+               
+               child:
+                 
+                 Column(
                   children: [
+                   
                     Row( 
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -49,61 +56,80 @@ class Onboard_Page extends StatelessWidget {
                     ),
                     SizedBox(height: 60.h,),
 
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
+
                       children: [
+
                         Container(
                           width: 120.w,
                           child: Column( 
                             children: [
+
                               Text('WELCOME TO', style: GoogleFonts.pacifico(
                                 color: Color.fromRGBO(92, 84, 107, 1.0),
                                 fontSize: 22.sp,
                                 fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.w500
                               ),),
+
                               Text('CHAMPTING', style: GoogleFonts.pacifico(
                                 color: Color.fromRGBO(92, 84, 107, 1.0),
                                 fontSize: 28.sp,
                                 fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.w500
                               ),),
-                              SizedBox(height: 10.h,),
-                            SizedBox(height: 40.h,),
-                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                ElevatedButton(onPressed: (){
 
+                              SizedBox(height: 10.h,),
+
+                            SizedBox(height: 40.h,),
+                               Padding(
+                                 padding: EdgeInsets.symmetric(horizontal:15.w, vertical: 5.h ),
+                                 child: TextFormField(
+                                                           decoration: InputDecoration(
+                                  fillColor:Color.fromARGB(255, 179, 179, 194),
+                                  filled: true,
+                                  hintText: 'email',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  )),
+                                   ),
+                               ),
+                            
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal:15.w, vertical: 5.h ),
+                                child: TextFormField(
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                  fillColor: Color.fromARGB(255, 179, 179, 194),
+                                  filled: true,
+                                  hintText: 'passcode',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  )),
+                                  ),
+                              ),
+
+                              SizedBox(height: 20.h,),
+
+                             ElevatedButton(onPressed: (){
+                                  // left empty
                                 },
-                                 child: Text('JOIN US'),
-                                 style: const ButtonStyle(
+                                 child: Text('Sign Up'),
+                                  style:  ButtonStyle(
+                                  fixedSize: MaterialStatePropertyAll(Size(70.w, 35.h)),    
                                   backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(51, 50, 71, 1)),
                                   elevation: MaterialStatePropertyAll(20)
                                  )),
-                                 ElevatedButton(onPressed: (){
+                                 
+                                  ],
 
-                                },
-                                 child: Text('LOG US'),
-                                 style: const ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(51, 50, 71, 1)),
-                                  elevation: MaterialStatePropertyAll(20),
-                                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                                    
-                                  ))
-
-                                 )),
-                              ],
-                             )
-
-                              
-                        
-                              
-                            ],
                           ),
+
                         ),
+
+                        
                         Column(
                           
                           children: [
