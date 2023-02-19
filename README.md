@@ -42,7 +42,18 @@ git push
 Copyright © 2022 [ThunderBlast](https://github.com/xXThunderBlastxX).<br/>
 This project is [MIT](LICENCE) licensed.
 
+<br>
+<hr>
 
+
+## Our Amazing Contributors of this Project 👨‍👨‍👦‍👦❤️
+Thanks to all the contributors who worked for this project to stay alive! 😊😎
+
+<a align="center" href="https://github.com/XxThunderBlastxX/chamting-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=XxThunderBlastxX/chamting-app&&max=817" />  
+</a>
+
+<br>
 
 --- 
 <div align="center">
