@@ -122,6 +122,12 @@ class SignUp_Page extends StatelessWidget {
                                   backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(51, 50, 71, 1)),
                                   elevation: MaterialStatePropertyAll(20)
                                  )),
+
+                                 SizedBox(height: 10.h,),
+
+                                 TextButton(onPressed: (){
+                                  // navigate to login page
+                                 }, child: small_fonts(text: 'Already a Member ? Sign In Here'))
                                  
                                   ],
 
