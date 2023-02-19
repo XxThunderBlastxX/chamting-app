@@ -26,6 +26,12 @@ flutter pub get
 flutter run -d windows
 ```
 
+ ## 👩🏽‍💻 Contribution
+
+- Contributions make the open source community such an amazing place to learn, inspire, and create.
+- Any contributions you make are greatly appreciated.
+
+
 ## How to contribute 🤝
 1. Set up the project in your local device.
 2. Find a relevant issue to work upon or raise one.
