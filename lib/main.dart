@@ -1,10 +1,10 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:chamting_app/ui/pages/login/login.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 import 'ui/pages/home/home.dart';
 
-
-void main()  {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
   doWhenWindowReady(() {
@@ -23,16 +23,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Chamting',
-        theme: ThemeData(
-          activeColor: Colors.teal,
-          accentColor: Colors.teal,
-        ),
-        initialRoute: HomePage.routeName,
-        routes: {
-          HomePage.routeName: (context) => const HomePage(),
-        },
+      debugShowCheckedModeBanner: false,
+      title: 'Chamting',
+      theme: ThemeData(
+        activeColor: Colors.teal,
+        // accentColor: Colors.teal,
+      ),
+      initialRoute: LoginPage.routeName, //home page
+      routes: {
+        HomePage.routeName: (context) => const HomePage(),
+        LoginPage.routeName: (context) => const LoginPage(),
+      },
     );
   }
 }
