@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   CustomTextField({
@@ -19,7 +20,6 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Center(
       child: Container(
         decoration: BoxDecoration(
@@ -29,8 +29,8 @@ class CustomTextField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(25),
         ),
-        height: 50,
-        width: 400,
+        height: 45.h,
+        width: 100.w,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 8, 8, 10),
           child: Center(
@@ -40,16 +40,16 @@ class CustomTextField extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: hint,
                 hintStyle: TextStyle(
-                  color: Colors.grey[400],
+                  color: Colors.grey[500],
                 ),
                 prefixIcon: prefix,
                 border: InputBorder.none,
                 suffixIcon: suffix,
               ),
               controller: controller,
-              cursorHeight: 30,
-              style: const TextStyle(
-                fontSize: 18,
+              cursorHeight: 30.h,
+              style: TextStyle(
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -67,8 +67,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 150,
+      height: ScreenUtil().setHeight(45),
+      width: ScreenUtil().setWidth(43),
       decoration: BoxDecoration(
         color: Colors.black87,
         borderRadius: BorderRadius.circular(50),
@@ -76,9 +76,9 @@ class CustomButton extends StatelessWidget {
       child: Center(
         child: Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white70,
-            fontSize: 16,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w200,
           ),
         ),
@@ -89,7 +89,6 @@ class CustomButton extends StatelessWidget {
 
 class CircularButton extends StatelessWidget {
   const CircularButton({super.key, required this.image});
-
   final String image;
   @override
   Widget build(BuildContext context) {
@@ -102,10 +101,10 @@ class CircularButton extends StatelessWidget {
       ),
       child: Center(
         child: Container(
-          height: 26,
-          width: 26,
+          height: 26.h,
+          width: 26.w,
           decoration: BoxDecoration(
-            color: Color.fromARGB(234, 255, 255, 255),
+            color: const Color.fromARGB(234, 255, 255, 255),
             borderRadius: BorderRadius.circular(100),
           ),
           child: Padding(

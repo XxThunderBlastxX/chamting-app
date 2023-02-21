@@ -1,5 +1,6 @@
 import 'package:chamting_app/utils/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginPage extends StatefulWidget {
   static const routeName = '/login';
@@ -12,10 +13,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  double space = 0.03;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
         child: SizedBox(
@@ -24,19 +23,19 @@ class _LoginPageState extends State<LoginPage> {
             child: Row(
               children: [
                 SizedBox(
-                  height: size.height,
-                  width: size.width * 0.47,
+                  width: ScreenUtil().setWidth(171),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Welcome back',
                         style: TextStyle(
-                          fontSize: 50,
+                          fontSize: 50.sp,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(height: size.height * space),
+                      SizedBox(height: 33.h),
                       CustomTextField(
                         controller: emailController,
                         maxLines: 1,
@@ -44,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                         suffix: const Icon(Icons.email),
                         obscure: false,
                       ),
-                      SizedBox(height: size.height * space),
+                      SizedBox(height: 12.h),
                       CustomTextField(
                         controller: passwordController,
                         maxLines: 1,
@@ -52,18 +51,18 @@ class _LoginPageState extends State<LoginPage> {
                         suffix: const Icon(Icons.password),
                         obscure: true,
                       ),
-                      SizedBox(height: size.height * space),
+                      SizedBox(height: 12.h),
                       SizedBox(
-                        height: 100,
-                        width: 300,
+                        height: 80.h,
+                        width: 95.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'forgot password?',
                               style: TextStyle(
-                                color: Colors.grey[400],
-                                fontSize: 16,
+                                color: Colors.grey[500],
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -71,23 +70,24 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                       ),
-                      SizedBox(height: size.height * space),
+                      SizedBox(height: 53.h),
                       SizedBox(
-                        height: 120,
-                        width: 300,
+                        height: 60.h,
+                        width: 110.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'got an account? register with',
                               style: TextStyle(
-                                color: Colors.grey[400],
-                                fontSize: 15,
+                                color: Colors.grey[500],
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
                             const CircularButton(
-                                image: 'assets/images/google_icon.png'),
+                              image: 'assets/images/google_icon.png',
+                            ),
                             const CircularButton(
                                 image: 'assets/images/google_icon.png'),
                             const CircularButton(
@@ -99,8 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: size.height,
-                  width: size.width * 0.47,
+                  width: ScreenUtil().setWidth(171),
                   child: Image.asset(
                     'assets/images/LOGIN.png',
                     fit: BoxFit.cover,
