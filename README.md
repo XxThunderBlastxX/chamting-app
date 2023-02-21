@@ -26,6 +26,12 @@ flutter pub get
 flutter run -d windows
 ```
 
+ ## 👩🏽‍💻 Contribution
+
+- Contributions make the open source community such an amazing place to learn, inspire, and create.
+- Any contributions you make are greatly appreciated.
+
+
 ## How to contribute 🤝
 1. Set up the project in your local device.
 2. Find a relevant issue to work upon or raise one.
@@ -41,3 +47,22 @@ git push
 ## License 📃
 Copyright © 2022 [ThunderBlast](https://github.com/xXThunderBlastxX).<br/>
 This project is [MIT](LICENCE) licensed.
+
+<br>
+<hr>
+
+
+## Our Amazing Contributors of this Project 👨‍👨‍👦‍👦❤️
+Thanks to all the contributors who worked for this project to stay alive! 😊😎
+
+<a align="center" href="https://github.com/XxThunderBlastxX/chamting-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=XxThunderBlastxX/chamting-app&&max=817" />  
+</a>
+
+<br>
+
+--- 
+<div align="center">
+    <h3><b>Take a moment to star ⭐ the project if you like it</b></h3>
+    <h3>Do checkout the other repos 💫</h3> 
+</div>
