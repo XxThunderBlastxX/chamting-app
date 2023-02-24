@@ -1,5 +1,6 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:chamting_app/ui/pages/login/login.dart';
+import 'package:chamting_app/ui/pages/onboarding/onboarding.dart';
 import 'package:chamting_app/ui/pages/sign_UP/sign_up.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,11 +36,12 @@ class MyApp extends StatelessWidget {
           activeColor: Colors.teal,
           accentColor: Colors.teal,
         ),
-        initialRoute: '/login',
+        initialRoute: '/onboarding',
         routes: {
           HomePage.routeName: (context) => const HomePage(),
           SignUpPage.routeName: (context) => const SignUpPage(),
           LoginPage.routeName: (context) => const LoginPage(),
+          OnboardingPage.routeName: (context) => const OnboardingPage(),
         },
       ),
     );
