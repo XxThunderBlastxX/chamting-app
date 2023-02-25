@@ -1,12 +1,10 @@
-import 'package:chamting_app/fonts/small_fonts.dart';
+import 'package:chamting_app/src/app/fonts/small_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignUpPage extends StatelessWidget {
-  static const routeName = '/sign_up';
-
-  const SignUpPage({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +95,6 @@ class SignUpPage extends StatelessWidget {
                             onPressed: () {
                               // left empty
                             },
-                            child: const Text('Sign Up'),
                             style: ButtonStyle(
                               fixedSize:
                                   MaterialStatePropertyAll(Size(70.w, 35.h)),
@@ -105,6 +102,7 @@ class SignUpPage extends StatelessWidget {
                                   Color.fromRGBO(51, 50, 71, 1)),
                               elevation: const MaterialStatePropertyAll(20),
                             ),
+                            child: const Text('Sign Up'),
                           ),
                           SizedBox(
                             height: 10.h,

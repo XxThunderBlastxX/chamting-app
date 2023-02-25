@@ -1,16 +1,16 @@
-import 'package:chamting_app/utils/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OnboardingPage extends StatefulWidget {
-  static const routeName = '/onboarding';
-  const OnboardingPage({super.key});
+import '../../utils/widgets.dart';
+
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingPage> createState() => _OnboardingPageState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingPageState extends State<OnboardingPage> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,15 +1,17 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:chamting_app/ui/pages/login/login.dart';
-import 'package:chamting_app/ui/pages/onboarding/onboarding.dart';
-import 'package:chamting_app/ui/pages/sign_UP/sign_up.dart';
+import 'package:chamting_app/src/features/authentication/presentation/login/login.dart';
+import 'package:chamting_app/src/features/authentication/presentation/signup/sign_up.dart';
+import 'package:chamting_app/src/features/onboarding/onboarding.dart';
+import 'package:chamting_app/src/routes/route_names.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'ui/pages/home/home.dart';
+import 'src/features/home/presentation/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
   doWhenWindowReady(() {
     const initialSize = Size(1280, 720);
     const minSize = Size(780, 680);
@@ -20,11 +22,11 @@ void main() {
   });
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ScreenUtilInit(
       designSize: ScreenUtil.defaultSize,
       splitScreenMode: true,
@@ -36,12 +38,12 @@ class MyApp extends StatelessWidget {
           activeColor: Colors.teal,
           accentColor: Colors.teal,
         ),
-        initialRoute: '/onboarding',
+        initialRoute: AppRoute.onboarding,
         routes: {
-          HomePage.routeName: (context) => const HomePage(),
-          SignUpPage.routeName: (context) => const SignUpPage(),
-          LoginPage.routeName: (context) => const LoginPage(),
-          OnboardingPage.routeName: (context) => const OnboardingPage(),
+          AppRoute.onboarding: (context) => const OnboardingScreen(),
+          AppRoute.home: (context) => const HomeScreen(),
+          AppRoute.signUp: (context) => const SignUpScreen(),
+          AppRoute.login: (context) => const LoginScreen(),
         },
       ),
     );
