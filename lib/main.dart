@@ -50,7 +50,7 @@ class MyApp extends ConsumerWidget {
         ),
         initialRoute: AppRoute.onboarding,
         routes: {
-          AppRoute.onboarding: (context) => const OnboardingScreen(),
+          AppRoute.onboarding: (context) => const OnBoardingScreen(),
           AppRoute.home: (context) => const HomeScreen(),
           AppRoute.signUp: (context) => const SignUpScreen(),
           AppRoute.login: (context) => const LoginScreen(),

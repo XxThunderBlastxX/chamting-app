@@ -1,17 +1,13 @@
+import 'package:chamting_app/common/widgets/styled_button.dart';
+import 'package:chamting_app/src/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../routes/route_names.dart';
-import '../../utils/widgets.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
 
-  @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
-}
-
-class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,64 +18,51 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Row(
               children: [
                 SizedBox(
-                  width: ScreenUtil().setWidth(171),
+                  width: 171.w,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(60, 10, 8, 0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Welcome ,",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 50.sp,
+                        RichText(
+                          text: TextSpan(
+                            text: "Welcome ,\n",
+                            style: theme.textTheme.headlineLarge,
+                            children: [
+                              TextSpan(
+                                text: 'to Chamting App',
+                                style: theme.textTheme.headlineLarge,
+                              ),
+                            ],
                           ),
                         ),
-                        Text(
-                          "to the Chamting App",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 30.sp,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
+                        20.verticalSpace,
                         Text(
                           "Welcome to our Windows chamting application! Our app allows you to easily connect with friends, family, and new people from around the world. ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 22.sp,
-                          ),
+                          style: theme.textTheme.labelLarge,
                         ),
-                        SizedBox(
-                          height: 12.h,
-                        ),
+                        20.verticalSpace,
                         Text(
                           "We hope you enjoy using our Windows chatting application! If you have any questions or need assistance, please contact our support team.",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 22.sp,
-                          ),
+                          style: theme.textTheme.labelLarge,
                         ),
-                        SizedBox(
-                          height: 40.h,
-                        ),
+                        40.verticalSpace,
                         Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ButtonBig(
-                                title: "Login",
+                              StyledButton(
                                 onTap: () => Navigator.pushNamed(
-                                    context, AppRoute.login),
+                                    context, AppRoute.signUp),
+                                text: 'Login',
                               ),
                               SizedBox(width: 15.w),
-                              ButtonBig(
-                                  title: "SignUp",
-                                  onTap: () => Navigator.pushNamed(
-                                      context, AppRoute.signUp)),
+                              StyledButton(
+                                onTap: () => Navigator.pushNamed(
+                                    context, AppRoute.signUp),
+                                text: 'SignUp',
+                              ),
                             ],
                           ),
                         ),
@@ -88,7 +71,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: ScreenUtil().setWidth(171),
+                  width: 171.w,
                   child: Image.asset(
                     'assets/images/onboarding.png',
                     fit: BoxFit.cover,
