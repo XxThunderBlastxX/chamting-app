@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../routes/route_names.dart';
 import '../../utils/widgets.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -69,9 +70,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const ButtonsBig(title: "Login"),
+                              ButtonBig(
+                                title: "Login",
+                                onTap: () => Navigator.pushNamed(
+                                    context, AppRoute.login),
+                              ),
                               SizedBox(width: 15.w),
-                              const ButtonsBig(title: "SignUp"),
+                              ButtonBig(
+                                  title: "SignUp",
+                                  onTap: () => Navigator.pushNamed(
+                                      context, AppRoute.signUp)),
                             ],
                           ),
                         ),

@@ -1,3 +1,4 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,16 @@ import 'src/features/home/presentation/home.dart';
 import 'src/features/onboarding/onboarding.dart';
 import 'src/routes/route_names.dart';
 
+Client client = Client();
+
 void main() {
+  client
+      .setEndpoint('http://localhost/v1')
+      .setProject('63feecd0999659a8b4f4')
+      .setSelfSigned(
+          status:
+              true); // For self signed certificates, only use for development
+
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
   doWhenWindowReady(() {

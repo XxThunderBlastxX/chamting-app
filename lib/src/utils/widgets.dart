@@ -125,37 +125,45 @@ class CircularButton extends StatelessWidget {
   }
 }
 
-class ButtonsBig extends StatelessWidget {
-  const ButtonsBig({super.key, required this.title});
-
+class ButtonBig extends StatelessWidget {
   final String title;
+  final VoidCallback onTap;
+
+  const ButtonBig({
+    super.key,
+    required this.title,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50.h,
-      width: 40.w,
-      decoration: BoxDecoration(
-          color: Colors.grey[900],
-          borderRadius: BorderRadius.circular(18),
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromRGBO(66, 66, 66, 1),
-              blurRadius: 0.1,
-              spreadRadius: 0.5,
-              blurStyle: BlurStyle.normal,
-              offset: Offset(0, 1),
-            ),
-          ]),
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 24,
-              color: Color.fromARGB(236, 255, 255, 255),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 50.h,
+        width: 40.w,
+        decoration: BoxDecoration(
+            color: Colors.grey[900],
+            borderRadius: BorderRadius.circular(18),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromRGBO(66, 66, 66, 1),
+                blurRadius: 0.1,
+                spreadRadius: 0.5,
+                blurStyle: BlurStyle.normal,
+                offset: Offset(0, 1),
+              ),
+            ]),
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Center(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 24,
+                color: Color.fromARGB(236, 255, 255, 255),
+              ),
             ),
           ),
         ),
