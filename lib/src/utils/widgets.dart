@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({
+  final TextEditingController controller;
+  final int maxLines;
+  final String hint;
+  final bool obscure;
+  final Widget? prefix;
+  final Widget? suffix;
+
+  const CustomTextField({
     super.key,
     required this.controller,
     required this.maxLines,
@@ -11,12 +18,6 @@ class CustomTextField extends StatelessWidget {
     required this.hint,
     required this.obscure,
   });
-  final TextEditingController controller;
-  final int maxLines;
-  final String hint;
-  final bool obscure;
-  Widget? prefix;
-  Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +63,7 @@ class CustomTextField extends StatelessWidget {
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.title});
+
   final String title;
 
   @override
@@ -89,7 +91,9 @@ class CustomButton extends StatelessWidget {
 
 class CircularButton extends StatelessWidget {
   const CircularButton({super.key, required this.image});
+
   final String image;
+
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,13 +1,13 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:chamting_app/src/features/authentication/presentation/login/login.dart';
-import 'package:chamting_app/src/features/authentication/presentation/signup/sign_up.dart';
-import 'package:chamting_app/src/features/onboarding/onboarding.dart';
-import 'package:chamting_app/src/routes/route_names.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'src/features/authentication/presentation/login/login.dart';
+import 'src/features/authentication/presentation/signup/sign_up.dart';
 import 'src/features/home/presentation/home.dart';
+import 'src/features/onboarding/onboarding.dart';
+import 'src/routes/route_names.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

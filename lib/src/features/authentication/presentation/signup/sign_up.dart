@@ -1,7 +1,8 @@
-import 'package:chamting_app/src/app/fonts/small_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../../app/fonts/fonts.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
