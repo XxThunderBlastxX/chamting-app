@@ -54,7 +54,7 @@ class OnBoardingScreen extends StatelessWidget {
                             children: [
                               StyledButton(
                                 onTap: () => Navigator.pushNamed(
-                                    context, AppRoute.signUp),
+                                    context, AppRoute.login),
                                 text: 'Login',
                               ),
                               SizedBox(width: 15.w),

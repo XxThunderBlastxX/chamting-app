@@ -1,3 +1,4 @@
+import 'package:chamting_app/common/widgets/styled_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -92,19 +93,7 @@ class SignUpScreen extends StatelessWidget {
                           SizedBox(
                             height: 20.h,
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              // left empty
-                            },
-                            style: ButtonStyle(
-                              fixedSize:
-                                  MaterialStatePropertyAll(Size(70.w, 35.h)),
-                              backgroundColor: const MaterialStatePropertyAll(
-                                  Color.fromRGBO(51, 50, 71, 1)),
-                              elevation: const MaterialStatePropertyAll(20),
-                            ),
-                            child: const Text('Sign Up'),
-                          ),
+                          StyledButton(onTap: () {}, text: "Sign Up"),
                           SizedBox(
                             height: 10.h,
                           ),

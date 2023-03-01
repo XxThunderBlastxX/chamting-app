@@ -1,3 +1,4 @@
+import 'package:chamting_app/common/widgets/styled_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,7 +63,7 @@ class LoginScreen extends HookWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const CustomButton(title: 'Sign in'),
+                            StyledButton(onTap: () {}, text: 'Log in'),
                           ],
                         ),
                       ),
