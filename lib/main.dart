@@ -17,9 +17,8 @@ void main() {
       .setEndpoint('http://localhost/v1')
       .setProject('63feecd0999659a8b4f4')
       .setSelfSigned(
-          status:
-              true); // For self signed certificates, only use for development
-
+        status: true,
+      ); // For self signed certificates, only use for development
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
   doWhenWindowReady(() {
