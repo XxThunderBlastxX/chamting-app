@@ -1,4 +1,4 @@
-import 'package:chamting_app/src/features/authentication/domain/user_model.dart';
+import 'package:chamting_app/src/features/authentication/domain/models/user_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class UserNotifier extends StateNotifier<User> {

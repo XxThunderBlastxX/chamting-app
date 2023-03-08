@@ -1,5 +1,5 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:chamting_app/src/data/data.dart';
+import 'package:chamting_app/src/providers/global_providers.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,13 +12,16 @@ import 'src/routes/route_names.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  AppwriteInstance.client
-      .setEndpoint('https://appwrite.koustav.dev/v1')
-      .setProject('6408b73727d253270c65')
-      .setSelfSigned(
-        status: true,
-      );
-  runApp(const ProviderScope(child: MyApp()));
+  // AppwriteInstance.client
+  //     .setEndpoint('https://appwrite.koustav.dev/v1')
+  //     .setProject('6408b73727d253270c65')
+  //     .setSelfSigned(status: true);
+  final container = ProviderContainer();
+  container.read(appwriteClientProvider);
+  runApp(UncontrolledProviderScope(
+    container: container,
+    child: const MyApp(),
+  ));
   doWhenWindowReady(() {
     const initialSize = Size(1280, 720);
     const minSize = Size(780, 680);
