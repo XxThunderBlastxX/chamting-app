@@ -6,7 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../utils/widgets.dart';
+import '../../../../../common/widgets/widgets.dart';
 import '../../domain/states/login_state.dart';
 
 class LoginScreen extends HookConsumerWidget {
@@ -16,7 +16,6 @@ class LoginScreen extends HookConsumerWidget {
     ref.listen(loginNotifierProvider, (previous, next) {
       if (next is LoginSuccess) {
         showSnackbar(
-          context,
           message: 'Logged In SuccessFully',
           color: Colors.green.shade300,
         );
@@ -25,11 +24,7 @@ class LoginScreen extends HookConsumerWidget {
         //   (route) => false,
         // );
       } else if (next is LoginError) {
-        showSnackbar(
-          context,
-          message: next.failure.message,
-          color: Colors.red.shade300,
-        );
+        showSnackbar(message: next.failure.message, color: Colors.red.shade400);
       } else {
         // do nothing as of now but can be used to show loading dialog
       }
@@ -60,16 +55,16 @@ class LoginScreen extends HookConsumerWidget {
                       CustomTextField(
                         controller: emailController,
                         maxLines: 1,
-                        hint: "email",
-                        suffix: const Icon(Icons.email),
+                        hint: "Email",
+                        suffix: const Icon(Icons.email_rounded),
                         obscure: false,
                       ),
                       SizedBox(height: 12.h),
                       CustomTextField(
                         controller: passwordController,
                         maxLines: 1,
-                        hint: "password",
-                        suffix: const Icon(Icons.password),
+                        hint: "Password",
+                        suffix: const Icon(Icons.lock_rounded),
                         obscure: true,
                       ),
                       SizedBox(height: 12.h),
@@ -80,14 +75,24 @@ class LoginScreen extends HookConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'forgot password?',
+                              'Forgot password?',
                               style: TextStyle(
                                 color: Colors.grey[500],
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            StyledButton(onTap: () {}, text: 'Log in'),
+                            StyledButton(
+                              text: 'Log in',
+                              onTap: () async {
+                                await ref
+                                    .read(loginNotifierProvider.notifier)
+                                    .loginUser(
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim(),
+                                    );
+                              },
+                            ),
                           ],
                         ),
                       ),
@@ -99,7 +104,7 @@ class LoginScreen extends HookConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'got an account? register with',
+                              'Got an account? Register with',
                               style: TextStyle(
                                 color: Colors.grey[500],
                                 fontSize: 15.sp,

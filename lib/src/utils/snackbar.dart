@@ -1,10 +1,13 @@
+import 'package:chamting_app/main.dart';
 import 'package:flutter/material.dart';
 
-void showSnackbar(
-  BuildContext context, {
+void showSnackbar({
   required String message,
   required Color color,
 }) =>
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: color),
+    scaffoldMessengerKey.currentState!.showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: color,
+      ),
     );

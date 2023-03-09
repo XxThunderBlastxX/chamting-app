@@ -12,7 +12,7 @@ final userProvider = StateNotifierProvider<UserNotifier, User>(
   (ref) => UserNotifier(ref),
 );
 
-///Appwrite Client provider
+///Appwrite Base Client provider
 ///This provider is used to setup the Appwrite Client
 final appwriteClientProvider = Provider<Client>((ref) {
   final client = Client();
