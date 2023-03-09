@@ -17,7 +17,7 @@ class LoginScreen extends HookConsumerWidget {
       if (next is LoginSuccess) {
         showSnackbar(
           message: 'Logged In SuccessFully',
-          color: Colors.green.shade300,
+          color: Colors.green.shade400,
         );
         // Navigator.of(context).pushNamedAndRemoveUntil(
         //   '/home',
