@@ -1,5 +1,5 @@
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart' as model;
+import 'package:appwrite/models.dart' as models;
 import 'package:chamting_app/src/features/authentication/data/auth_repository_impl.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,11 +15,11 @@ final authRepositoryProvider = Provider((ref) {
 
 /// Auth repository that implements asbtract class [AuthRepositoryImpl]
 class AuthRepository implements AuthRepositoryImpl {
-  AuthRepository({required Account account}) : _account = account;
   late final Account _account;
+  AuthRepository({required Account account}) : _account = account;
 
   @override
-  Future<model.Account?> currentUserAccount() async {
+  Future<models.Account?> currentUserAccount() async {
     try {
       return await _account.get();
     } on AppwriteException {
@@ -42,8 +42,8 @@ class AuthRepository implements AuthRepositoryImpl {
   }
 
   @override
-  FutureEither<model.Account> signUpUser(
-      {required String email, required String password,String? name}) async {
+  FutureEither<models.Account> signUpUser(
+      {required String email, required String password, String? name}) async {
     try {
       final account = await _account.create(
         userId: ID.unique(),
@@ -60,10 +60,10 @@ class AuthRepository implements AuthRepositoryImpl {
   }
 
   @override
-  FutureEither<model.Session> loginUser(
+  FutureEither<models.Session> loginUser(
       {required String email, required String password}) async {
     try {
-      model.Session session = await _account.createEmailSession(
+      models.Session session = await _account.createEmailSession(
         email: email,
         password: password,
       );
