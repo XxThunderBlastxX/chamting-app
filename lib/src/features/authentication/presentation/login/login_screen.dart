@@ -1,5 +1,6 @@
 import 'package:chamting_app/common/widgets/styled_button.dart';
 import 'package:chamting_app/src/features/authentication/app/login_notifier.dart';
+import 'package:chamting_app/src/routes/route_names.dart';
 import 'package:chamting_app/src/utils/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -16,13 +17,11 @@ class LoginScreen extends HookConsumerWidget {
     ref.listen(loginNotifierProvider, (previous, next) {
       if (next is LoginSuccess) {
         showSnackbar(
-          message: 'Logged In SuccessFully',
-          color: Colors.green.shade400,
+            message: 'Logged In SuccessFully', color: Colors.green.shade400);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          AppRoute.home,
+          (route) => false,
         );
-        // Navigator.of(context).pushNamedAndRemoveUntil(
-        //   '/home',
-        //   (route) => false,
-        // );
       } else if (next is LoginError) {
         showSnackbar(message: next.failure.message, color: Colors.red.shade400);
       } else {

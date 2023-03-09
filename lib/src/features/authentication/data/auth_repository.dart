@@ -43,11 +43,12 @@ class AuthRepository implements AuthRepositoryImpl {
 
   @override
   FutureEither<model.Account> signUpUser(
-      {required String email, required String password}) async {
+      {required String email, required String password,String? name}) async {
     try {
       final account = await _account.create(
         userId: ID.unique(),
         email: email,
+        name: name,
         password: password,
       );
       return right(account);

@@ -17,7 +17,6 @@ final loginNotifierProvider =
   ),
 );
 
-/// Login notifier or controller for login screen
 class LoginNotifier extends StateNotifier<LoginState> {
   late final AuthRepository _authRepository;
   late final UserNotifier _userNotifier;
