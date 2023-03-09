@@ -30,9 +30,9 @@ class AuthRepository implements AuthRepositoryImpl {
   }
 
   @override
-  FutureEitherVoid signOut() async {
+  FutureEitherVoid signOut({String sessionId = 'current'}) async {
     try {
-      await _account.deleteSession(sessionId: 'current');
+      await _account.deleteSession(sessionId: sessionId);
       return right(null);
     } on AppwriteException catch (e, stackTrace) {
       return left(e.toFailure(stackTrace));
