@@ -13,6 +13,13 @@ final authRepositoryProvider = Provider((ref) {
   return AuthRepository(account: account);
 });
 
+
+/// Auth state provider
+final authStateProvider = FutureProvider.autoDispose<models.Account?>((ref) async{
+  final authRepository = ref.watch(authRepositoryProvider);
+  return authRepository.currentUserAccount();
+});
+
 /// Auth repository that implements asbtract class [AuthRepositoryImpl]
 class AuthRepository implements AuthRepositoryImpl {
   late final Account _account;
