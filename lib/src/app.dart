@@ -1,3 +1,5 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:chamting_app/src/utils/windows_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -26,7 +28,13 @@ class MyApp extends ConsumerWidget {
         title: 'Chamting',
         theme: ThemeData.light().copyWith(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal)),
-        initialRoute: AppRoute.onBoarding,
+        home: Scaffold(
+          body: WindowBorder(
+            color: Colors.black,
+            width: 1,
+            child: const OnBoardingScreen(),
+          ),
+        ),
         routes: {
           AppRoute.onBoarding: (context) => const OnBoardingScreen(),
           AppRoute.home: (context) => const HomeScreen(),
