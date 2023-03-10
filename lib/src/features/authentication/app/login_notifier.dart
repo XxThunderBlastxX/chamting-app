@@ -8,7 +8,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../app/errors/errors.dart';
 
-///LoginNotifierProvider
 final loginNotifierProvider =
     StateNotifierProvider.autoDispose<LoginNotifier, LoginState>(
   (ref) => LoginNotifier(

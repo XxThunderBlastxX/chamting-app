@@ -116,7 +116,7 @@ class SignUpScreen extends HookConsumerWidget {
                                 if (formKey.currentState!.validate()) {
                                   await ref
                                       .read(signupNotifierProvider.notifier)
-                                      .registerUser(
+                                      .signUpUser(
                                           email: emailController.text.trim(),
                                           password:
                                               passwordController.text.trim());

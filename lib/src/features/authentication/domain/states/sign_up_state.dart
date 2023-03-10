@@ -6,9 +6,8 @@ import '../../../../app/errors/failure.dart';
 abstract class SignUpState extends Equatable {}
 
 class SignUpInitial extends SignUpState {
-  SignUpInitial();
   @override
-  List<String?> get props => [];
+  List<Object?> get props => [];
 }
 
 class SignUpLoading extends SignUpState {
@@ -21,7 +20,7 @@ class SignUpSuccess extends SignUpState {
   final String successMessage = 'Account created successfully';
   SignUpSuccess(this.account);
   @override
-  List<Object> get props => [account,successMessage];
+  List<Object> get props => [account, successMessage];
 }
 
 class SignUpError extends SignUpState {

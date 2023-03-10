@@ -27,15 +27,20 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
         _userNotifier = userNotifier,
         super(SignUpInitial());
 
-  Future<void> registerUser({
+  Future<void> signUpUser({
     required String email,
-    String? name,
     required String password,
+    String? name,
   }) async {
     state = SignUpLoading();
     //TODO: Add name to the request if later on added to the form
     Either<Failure, Account> response = await _authRepository.signUpUser(
-        email: email, password: password, name: name);
+      email: email,
+      password: password,
+      name: name,
+    );
+    //TODO: Do some session task if it is successful
+    // _userNotifier.
     response.fold(
       (l) => state = SignUpError(l),
       (r) => state = SignUpSuccess(r),
