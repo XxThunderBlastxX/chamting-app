@@ -1,3 +1,4 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:chamting_app/common/widgets/styled_button.dart';
 import 'package:chamting_app/src/features/authentication/app/signup_notifier.dart';
 import 'package:chamting_app/src/features/authentication/domain/states/sign_up_state.dart';
@@ -10,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../app/fonts/fonts.dart';
+import '../../../../utils/windows_button.dart';
 
 class SignUpScreen extends HookConsumerWidget {
   const SignUpScreen({super.key});
@@ -32,144 +34,156 @@ class SignUpScreen extends HookConsumerWidget {
       body: SizedBox(
         height: 720.h,
         width: 1480.r,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 50.h),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.r), color: Colors.white),
-            height: 300.h,
-            width: 300.w,
-            alignment: Alignment.centerRight,
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  SizedBox(height: 60.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(
+          children: [
+            const TitleBar(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+              child: Container(
+                // margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 50.h),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.r),
+                    color: Colors.white),
+                height: 430.h,
+                width: 300.w,
+                alignment: Alignment.centerRight,
+                child: Form(
+                  key: formKey,
+                  child: Column(
                     children: [
-                      SizedBox(
-                        width: 120.w,
-                        child: Column(
-                          children: [
-                            Text(
-                              'WELCOME TO',
-                              style: GoogleFonts.pacifico(
-                                  color: const Color.fromRGBO(92, 84, 107, 1.0),
-                                  fontSize: 22.sp,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Text(
-                              'CHAMTING',
-                              style: GoogleFonts.pacifico(
-                                  color: const Color.fromRGBO(92, 84, 107, 1.0),
-                                  fontSize: 28.sp,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(height: 50.h),
-                            RPadding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 5),
-                              child: TextFormField(
-                                validator: (value) => value.validateEmail(),
-                                controller: emailController,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                decoration: InputDecoration(
-                                  fillColor:
-                                      const Color.fromARGB(255, 179, 179, 194),
-                                  filled: true,
-                                  hintText: 'Email',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            RPadding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 5),
-                              child: TextFormField(
-                                obscureText: true,
-                                validator: (value) => value.validatePassword(),
-                                controller: passwordController,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                decoration: InputDecoration(
-                                  fillColor:
-                                      const Color.fromARGB(255, 179, 179, 194),
-                                  filled: true,
-                                  hintText: 'Password',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 20.h),
-                            StyledButton(
-                              onTap: () async {
-                                if (formKey.currentState!.validate()) {
-                                  await ref
-                                      .read(signupNotifierProvider.notifier)
-                                      .signUpUser(
-                                          email: emailController.text.trim(),
-                                          password:
-                                              passwordController.text.trim());
-                                }
-                              },
-                              text: "Sign Up",
-                            ),
-                            SizedBox(height: 10.h),
-                            TextButton(
-                              onPressed: () => Navigator.pushReplacementNamed(
-                                context,
-                                AppRoute.login,
-                              ),
-                              child: const small_fonts(
-                                  text: 'Already a Member ? Sign In Here'),
-                            )
-                          ],
-                        ),
-                      ),
-                      Column(
+                      SizedBox(height: 60.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 8.w, vertical: 8.h),
-                            child: Container(
-                              height: 260.h,
-                              width: 140.w,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15.r),
-                                image: const DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: AssetImage(
-                                    'assets/talking.png',
+                          SizedBox(
+                            width: 120.w,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'WELCOME TO',
+                                  style: GoogleFonts.pacifico(
+                                      color: const Color.fromRGBO(
+                                          92, 84, 107, 1.0),
+                                      fontSize: 22.sp,
+                                      fontStyle: FontStyle.italic,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Text(
+                                  'CHAMTING',
+                                  style: GoogleFonts.pacifico(
+                                      color: const Color.fromRGBO(
+                                          92, 84, 107, 1.0),
+                                      fontSize: 28.sp,
+                                      fontStyle: FontStyle.italic,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 50.h),
+                                RPadding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 5),
+                                  child: TextFormField(
+                                    validator: (value) => value.validateEmail(),
+                                    controller: emailController,
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    decoration: InputDecoration(
+                                      fillColor: const Color.fromARGB(
+                                          255, 179, 179, 194),
+                                      filled: true,
+                                      hintText: 'Email',
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    offset: const Offset(0, 8),
-                                    blurRadius: 1.w,
-                                    color: const Color.fromARGB(40, 51, 50, 71),
-                                  )
-                                ],
-                              ),
+                                RPadding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 5),
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    validator: (value) =>
+                                        value.validatePassword(),
+                                    controller: passwordController,
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    decoration: InputDecoration(
+                                      fillColor: const Color.fromARGB(
+                                          255, 179, 179, 194),
+                                      filled: true,
+                                      hintText: 'Password',
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20.h),
+                                StyledButton(
+                                  onTap: () async {
+                                    if (formKey.currentState!.validate()) {
+                                      await ref
+                                          .read(signupNotifierProvider.notifier)
+                                          .signUpUser(
+                                              email:
+                                                  emailController.text.trim(),
+                                              password: passwordController.text
+                                                  .trim());
+                                    }
+                                  },
+                                  text: "Sign Up",
+                                ),
+                                SizedBox(height: 10.h),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pushReplacementNamed(
+                                    context,
+                                    AppRoute.login,
+                                  ),
+                                  child: const small_fonts(
+                                      text: 'Already a Member ? Sign In Here'),
+                                )
+                              ],
                             ),
+                          ),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 8.w, vertical: 8.h),
+                                child: Container(
+                                  height: 260.h,
+                                  width: 140.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.r),
+                                    image: const DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: AssetImage(
+                                        'assets/talking.png',
+                                      ),
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        offset: const Offset(0, 8),
+                                        blurRadius: 1.w,
+                                        color: const Color.fromARGB(
+                                            40, 51, 50, 71),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
                           )
                         ],
                       )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

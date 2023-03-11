@@ -105,8 +105,8 @@ class CircularButton extends StatelessWidget {
       ),
       child: Center(
         child: Container(
-          height: 26.h,
-          width: 26.w,
+          height: 24.h,
+          width: 24.w,
           decoration: BoxDecoration(
             color: const Color.fromARGB(234, 255, 255, 255),
             borderRadius: BorderRadius.circular(100),

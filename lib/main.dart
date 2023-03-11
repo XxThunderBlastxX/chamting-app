@@ -9,11 +9,12 @@ void main() {
     child: MyApp(),
   ));
   doWhenWindowReady(() {
-    const initialSize = Size(1280, 720);
-    const minSize = Size(780, 680);
-    appWindow.minSize = minSize;
-    appWindow.size = initialSize;
-    appWindow.alignment = Alignment.center;
-    appWindow.show();
+    final win = appWindow;
+    const initialSize = Size(900, 600);
+    win.minSize = initialSize;
+    win.size = initialSize;
+    win.alignment = Alignment.center;
+    win.title = "Chamting App";
+    win.show();
   });
 }
