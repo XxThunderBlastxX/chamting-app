@@ -17,23 +17,7 @@ class OnBoardingScreen extends StatelessWidget {
         child: SizedBox(
           child: Column(
             children: [
-              WindowTitleBarBox(
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: MoveWindow(
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(10, 8, 3, 3),
-                        child: Text(
-                          "Chamting-App",
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    )),
-                    const WindowButtons(),
-                  ],
-                ),
-              ),
+              const TitleBar(),
               const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(8.0),

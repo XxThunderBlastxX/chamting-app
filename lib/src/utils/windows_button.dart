@@ -2,7 +2,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 
 final buttonColors = WindowButtonColors(
-    iconNormal: const Color(0xFF805306),
+    iconNormal: Colors.black,
     mouseOver: Colors.grey[400],
     mouseDown: const Color(0xFF805306),
     iconMouseOver: Colors.black,
@@ -44,6 +44,31 @@ class _WindowButtonsState extends State<WindowButtons> {
               ),
         CloseWindowButton(colors: closeButtonColors),
       ],
+    );
+  }
+}
+
+class TitleBar extends StatelessWidget {
+  const TitleBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return WindowTitleBarBox(
+      child: Row(
+        children: [
+          Expanded(
+              child: MoveWindow(
+            child: const Padding(
+              padding: EdgeInsets.fromLTRB(10, 8, 3, 3),
+              child: Text(
+                "Chamting-App",
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+          )),
+          const WindowButtons(),
+        ],
+      ),
     );
   }
 }

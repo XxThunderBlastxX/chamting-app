@@ -36,24 +36,7 @@ class SignUpScreen extends HookConsumerWidget {
         width: 1480.r,
         child: Column(
           children: [
-            WindowTitleBarBox(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: MoveWindow(
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(10, 8, 3, 3),
-                        child: Text(
-                          "Chamting-App",
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const WindowButtons(),
-                ],
-              ),
-            ),
+            const TitleBar(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
               child: Container(
