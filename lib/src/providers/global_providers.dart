@@ -1,16 +1,8 @@
 import 'package:appwrite/appwrite.dart';
-import 'package:chamting_app/src/features/authentication/domain/models/user_model.dart';
-import 'package:chamting_app/src/providers/user_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Global providers
 /// **This file contains all the providers that are used in the entire app
-
-/// User provider
-final userProvider = StateNotifierProvider<UserNotifier, User>(
-  name: 'userProvider',
-  (ref) => UserNotifier(ref),
-);
 
 ///Appwrite Base Client provider
 ///This provider is used to setup the Appwrite Client
