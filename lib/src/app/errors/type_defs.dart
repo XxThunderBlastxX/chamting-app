@@ -4,6 +4,6 @@ import 'failure.dart';
 
 typedef FutureEither<T> = Future<Either<Failure, T>>;
 
-typedef FutureEitherUnit = Either<Failure, Unit>;
+typedef FutureEitherUnit = FutureEither<Unit>;
 
 typedef FutureEitherVoid = FutureEither<void>;
