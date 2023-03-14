@@ -1,5 +1,4 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:chamting_app/common/widgets/styled_button.dart';
+import 'package:chamting_app/common/styled_button.dart';
 import 'package:chamting_app/src/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

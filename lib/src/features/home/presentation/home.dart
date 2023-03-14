@@ -1,3 +1,4 @@
+import 'package:chamting_app/common/network_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,8 +9,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: Center(
-      child: Text('Home Page'),
-    ));
+      body: ConnectivityWrapper(
+        offlineChild: Center(
+          child: Text('No Internet Connection'),
+        ),
+        onlineChild: Center(
+          child: Text('Home Page'),
+        ),
+      ),
+    );
   }
 }

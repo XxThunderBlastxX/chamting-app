@@ -29,8 +29,8 @@ environment:
 dependencies:
   appwrite: ^8.2.0
   bitsdojo_window: ^0.1.5
-  connectivity_plus: ^2.3.6
   cupertino_icons: ^1.0.2
+  connectivity_plus: ^3.0.3
   dartz: ^0.10.1
   dio: ^4.0.6
   equatable: ^2.0.5

@@ -1,5 +1,4 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:chamting_app/common/widgets/styled_button.dart';
+import 'package:chamting_app/common/styled_button.dart';
 import 'package:chamting_app/src/features/authentication/app/signup_notifier.dart';
 import 'package:chamting_app/src/features/authentication/domain/states/sign_up_state.dart';
 import 'package:chamting_app/src/routes/route_names.dart';
