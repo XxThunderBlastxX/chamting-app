@@ -6,6 +6,24 @@
 
 An windows chatting app build using Flutter and Firebase.
 
+<p>
+
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=XxThunderBlastxX%2Fchamting-app%20&countColor=%23263759&style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![Github](https://img.shields.io/github/license/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/XxThunderBlastxX/chamting-app?style=for-the-badge)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/XxThunderBlastxX/chamting-app?style=for-the-badge)
+  
+ </p>
+
 ## How to setup the project ⚙
 
 1. Fork the repository.
