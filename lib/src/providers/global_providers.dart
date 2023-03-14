@@ -1,6 +1,9 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../app/constants/enums.dart';
+import 'connectivity_provider.dart';
+
 /// Global providers
 /// **This file contains all the providers that are used in the entire app
 
@@ -19,4 +22,14 @@ final appwriteClientProvider = Provider<Client>(
 final appwriteAccountProvider = Provider<Account>(
   name: 'appwriteAccountProvider',
   (ref) => Account(ref.watch(appwriteClientProvider)),
+);
+
+///Network notifier provider
+///This provider is used to check the network status and notifies regarding any sort of change
+///in the network status
+///This provider is used in the [NetworkWidgetWrapper] widget
+final StreamNotifierProvider<NetworkNotifier, ConnectionStatus>
+    connectivityNotifierProvider =
+    StreamNotifierProvider<NetworkNotifier, ConnectionStatus>(
+  NetworkNotifier.new,
 );

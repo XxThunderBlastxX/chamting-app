@@ -1,5 +1,4 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:chamting_app/common/widgets/styled_button.dart';
+import 'package:chamting_app/common/styled_button.dart';
 import 'package:chamting_app/src/features/authentication/app/login_notifier.dart';
 import 'package:chamting_app/src/routes/route_names.dart';
 import 'package:chamting_app/src/utils/snackbar.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../../common/widgets/widgets.dart';
+import '../../../../../common/textfield_widgets.dart';
 import '../../../../utils/windows_button.dart';
 import '../../domain/states/login_state.dart';
 
