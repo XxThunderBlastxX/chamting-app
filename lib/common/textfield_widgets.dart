@@ -143,17 +143,18 @@ class ButtonBig extends StatelessWidget {
         height: 50.h,
         width: 40.w,
         decoration: BoxDecoration(
-            color: Colors.grey[900],
-            borderRadius: BorderRadius.circular(18),
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromRGBO(66, 66, 66, 1),
-                blurRadius: 0.1,
-                spreadRadius: 0.5,
-                blurStyle: BlurStyle.normal,
-                offset: Offset(0, 1),
-              ),
-            ]),
+          color: Colors.grey[900],
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: const <BoxShadow>[
+            BoxShadow(
+              color: Color.fromRGBO(66, 66, 66, 1),
+              blurRadius: 0.1,
+              spreadRadius: 0.5,
+              blurStyle: BlurStyle.normal,
+              offset: Offset(0, 1),
+            ),
+          ],
+        ),
         child: Padding(
           padding: const EdgeInsets.all(5),
           child: Center(

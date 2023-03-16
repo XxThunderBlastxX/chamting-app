@@ -1,8 +1,8 @@
-import 'package:chamting_app/src/providers/global_providers.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../src/app/constants/enums.dart';
+import '../src/providers/global_providers.dart';
 
 class ConnectivityWrapper extends StatelessWidget {
   final Widget onlineChild;
@@ -15,10 +15,12 @@ class ConnectivityWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(builder: (context, ref, child) {
-      final status = ref.watch(connectivityNotifierProvider);
+    return Consumer(
+        builder: (BuildContext context, WidgetRef ref, Widget? child) {
+      AsyncValue<ConnectionStatus> status =
+          ref.watch(connectivityNotifierProvider);
       return status.when(
-        data: (status) {
+        data: (ConnectionStatus status) {
           if (status == ConnectionStatus.online) {
             return onlineChild;
           } else {
@@ -26,7 +28,7 @@ class ConnectivityWrapper extends StatelessWidget {
           }
         },
         loading: () => offlineChild,
-        error: (error, stack) => offlineChild,
+        error: (Object error, StackTrace stack) => offlineChild,
       );
     });
   }

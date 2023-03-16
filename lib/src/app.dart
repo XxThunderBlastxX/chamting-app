@@ -1,8 +1,9 @@
-import 'package:chamting_app/src/features/authentication/data/auth_repository.dart';
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'features/authentication/data/auth_repository.dart';
 import 'features/authentication/presentation/login/login_screen.dart';
 import 'features/authentication/presentation/signup/sign_up_screen.dart';
 import 'features/home/presentation/home.dart';
@@ -21,28 +22,29 @@ class MyApp extends StatelessWidget {
       designSize: ScreenUtil.defaultSize,
       splitScreenMode: true,
       minTextAdapt: true,
-      builder: (context, child) => MaterialApp(
+      builder: (BuildContext context, Widget? child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: scaffoldMessengerKey,
         title: 'Chamting',
         theme: ThemeData.light().copyWith(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal)),
         home: Consumer(
-          builder: (context, ref, child) {
-            final authState = ref.watch(authStateProvider);
+          builder: (BuildContext context, WidgetRef ref, Widget? child) {
+            AsyncValue<Account?> authState = ref.watch(authStateProvider);
             //TODO: show any screen later on if new screens are added later
             return authState.maybeWhen(
-              data: (data) =>
+              data: (Account? data) =>
                   data != null ? const HomeScreen() : const OnBoardingScreen(),
               orElse: () => const OnBoardingScreen(),
             );
           },
         ),
-        routes: {
-          AppRoute.onBoarding: (context) => const OnBoardingScreen(),
-          AppRoute.home: (context) => const HomeScreen(),
-          AppRoute.signUp: (context) => const SignUpScreen(),
-          AppRoute.login: (context) => const LoginScreen(),
+        routes: <String, WidgetBuilder>{
+          AppRoute.onBoarding: (BuildContext context) =>
+              const OnBoardingScreen(),
+          AppRoute.home: (BuildContext context) => const HomeScreen(),
+          AppRoute.signUp: (BuildContext context) => const SignUpScreen(),
+          AppRoute.login: (BuildContext context) => const LoginScreen(),
         },
       ),
     );

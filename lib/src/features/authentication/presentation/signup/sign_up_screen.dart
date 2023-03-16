@@ -1,23 +1,23 @@
-import 'package:chamting_app/common/styled_button.dart';
-import 'package:chamting_app/src/features/authentication/app/signup_notifier.dart';
-import 'package:chamting_app/src/features/authentication/domain/states/sign_up_state.dart';
-import 'package:chamting_app/src/routes/route_names.dart';
-import 'package:chamting_app/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../../common/styled_button.dart';
 import '../../../../app/fonts/fonts.dart';
+import '../../../../routes/route_names.dart';
+import '../../../../utils/utils.dart';
 import '../../../../utils/windows_button.dart';
+import '../../app/signup_notifier.dart';
+import '../../domain/states/sign_up_state.dart';
 
 class SignUpScreen extends HookConsumerWidget {
   const SignUpScreen({super.key});
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(signupNotifierProvider, (previous, next) async {
+    ref.listen(signupNotifierProvider, (Object? previous, Object? next) async {
       if (next is SignUpSuccess) {
         showSnackbar(
             message: next.successMessage, color: Colors.green.shade400);
@@ -26,15 +26,15 @@ class SignUpScreen extends HookConsumerWidget {
         showSnackbar(message: next.failure.message, color: Colors.red.shade400);
       }
     });
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
+    TextEditingController emailController = useTextEditingController();
+    TextEditingController passwordController = useTextEditingController();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 179, 179, 194),
       body: SizedBox(
         height: 720.h,
         width: 1480.r,
         child: Column(
-          children: [
+          children: <Widget>[
             const TitleBar(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
@@ -49,16 +49,16 @@ class SignUpScreen extends HookConsumerWidget {
                 child: Form(
                   key: formKey,
                   child: Column(
-                    children: [
+                    children: <Widget>[
                       SizedBox(height: 60.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                        children: <Widget>[
                           SizedBox(
                             width: 120.w,
                             child: Column(
-                              children: [
+                              children: <Widget>[
                                 Text(
                                   'WELCOME TO',
                                   style: GoogleFonts.pacifico(
@@ -82,7 +82,8 @@ class SignUpScreen extends HookConsumerWidget {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 5),
                                   child: TextFormField(
-                                    validator: (value) => value.validateEmail(),
+                                    validator: (String? value) =>
+                                        value.validateEmail(),
                                     controller: emailController,
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
@@ -102,7 +103,7 @@ class SignUpScreen extends HookConsumerWidget {
                                       horizontal: 15, vertical: 5),
                                   child: TextFormField(
                                     obscureText: true,
-                                    validator: (value) =>
+                                    validator: (String? value) =>
                                         value.validatePassword(),
                                     controller: passwordController,
                                     autovalidateMode:
@@ -131,7 +132,7 @@ class SignUpScreen extends HookConsumerWidget {
                                                   .trim());
                                     }
                                   },
-                                  text: "Sign Up",
+                                  text: 'Sign Up',
                                 ),
                                 SizedBox(height: 10.h),
                                 TextButton(
@@ -147,7 +148,7 @@ class SignUpScreen extends HookConsumerWidget {
                             ),
                           ),
                           Column(
-                            children: [
+                            children: <Widget>[
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 8.w, vertical: 8.h),
@@ -162,7 +163,7 @@ class SignUpScreen extends HookConsumerWidget {
                                         'assets/talking.png',
                                       ),
                                     ),
-                                    boxShadow: [
+                                    boxShadow: <BoxShadow>[
                                       BoxShadow(
                                         offset: const Offset(0, 8),
                                         blurRadius: 1.w,

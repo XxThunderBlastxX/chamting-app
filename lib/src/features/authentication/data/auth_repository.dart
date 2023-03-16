@@ -1,22 +1,24 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart' as models;
-import 'package:chamting_app/src/features/authentication/data/auth_repository_impl.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../app/errors/errors.dart';
 import '../../../providers/global_providers.dart';
+import 'auth_repository_impl.dart';
 
 /// Auth repository provider
-final authRepositoryProvider = Provider((ref) {
-  final account = ref.watch(appwriteAccountProvider);
+final Provider<AuthRepository> authRepositoryProvider =
+    Provider<AuthRepository>((ProviderRef<AuthRepository> ref) {
+  Account account = ref.watch(appwriteAccountProvider);
   return AuthRepository(account: account);
 });
 
-
 /// Auth state provider
-final authStateProvider = FutureProvider.autoDispose<models.Account?>((ref) async{
-  final authRepository = ref.watch(authRepositoryProvider);
+final AutoDisposeFutureProvider<models.Account?> authStateProvider =
+    FutureProvider.autoDispose<models.Account?>(
+        (AutoDisposeFutureProviderRef<models.Account?> ref) async {
+  AuthRepository authRepository = ref.watch(authRepositoryProvider);
   return await authRepository.currentUserAccount();
 });
 
@@ -52,7 +54,7 @@ class AuthRepository implements AuthRepositoryImpl {
   FutureEither<models.Account> signUpUser(
       {required String email, required String password, String? name}) async {
     try {
-      final account = await _account.create(
+      models.Account account = await _account.create(
         userId: ID.unique(),
         email: email,
         name: name,

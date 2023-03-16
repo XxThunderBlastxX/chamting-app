@@ -1,14 +1,17 @@
-import 'package:chamting_app/src/app/errors/errors.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../app/errors/errors.dart';
+
 ///Local Storage service provider
 ///This provider is used to perform CRUD operations on local storage
-final localStorageAPIProvider = Provider<LocalStorageAPI>(
+final Provider<LocalStorageAPI> localStorageAPIProvider =
+    Provider<LocalStorageAPI>(
   name: 'localStorageProvider',
-  (ref) => LocalStorageAPI(storage: const FlutterSecureStorage()),
+  (ProviderRef<LocalStorageAPI> ref) =>
+      LocalStorageAPI(storage: const FlutterSecureStorage()),
 );
 
 //Flutter secure storage
@@ -69,6 +72,6 @@ class LocalStorageAPI {
 
   ///Check if the provided key exists in storage
   Future<bool> containsKey(String key, {WindowsOptions? windowsOptions}) async {
-    return await _storage.containsKey(key: key, wOptions: windowsOptions);
+    return _storage.containsKey(key: key, wOptions: windowsOptions);
   }
 }

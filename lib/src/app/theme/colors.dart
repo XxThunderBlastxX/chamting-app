@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 //Primary Colors
-const red = Colors.red;
-const blue = Colors.blue;
-const yellow = Colors.yellow;
+const Color red = Colors.red;
+const Color blue = Colors.blue;
+const Color yellow = Colors.yellow;
 
 //Secondary Colors
-const purple = Colors.purple;
-const orange = Colors.orange;
-const green = Colors.green;
+const Color purple = Colors.purple;
+const Color orange = Colors.orange;
+const Color green = Colors.green;

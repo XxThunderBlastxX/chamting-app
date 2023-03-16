@@ -1,16 +1,17 @@
 import 'package:appwrite/models.dart' show Session;
-import 'package:chamting_app/src/features/authentication/data/auth_repository.dart';
-import 'package:chamting_app/src/features/authentication/domain/states/login_state.dart';
-import 'package:chamting_app/src/providers/global_providers.dart';
-import 'package:chamting_app/src/providers/user_provider.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../app/errors/errors.dart';
+import '../../../providers/user_provider.dart';
+import '../data/auth_repository.dart';
+import '../domain/states/login_state.dart';
 
-final loginNotifierProvider =
+final AutoDisposeStateNotifierProvider<LoginNotifier, LoginState>
+    loginNotifierProvider =
     StateNotifierProvider.autoDispose<LoginNotifier, LoginState>(
-  (ref) => LoginNotifier(
+  (AutoDisposeStateNotifierProviderRef<LoginNotifier, LoginState> ref) =>
+      LoginNotifier(
     authRepository: ref.watch(authRepositoryProvider),
     userNotifier: ref.watch(userProvider.notifier),
   ),
@@ -34,8 +35,8 @@ class LoginNotifier extends StateNotifier<LoginState> {
     Either<Failure, Session> response =
         await _authRepository.loginUser(email: email, password: password);
     response.fold(
-      (l) => state = LoginError(l),
-      (r) {
+      (Failure l) => state = LoginError(l),
+      (Session r) {
         _userNotifier.updateUserProps(id: r.userId);
         return state = LoginSuccess(r);
       },
