@@ -1,8 +1,9 @@
-import 'package:chamting_app/common/network_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/network_widget.dart';
+
 class HomeScreen extends StatelessWidget {
-  static const route = '/home';
+  static const String route = '/home';
 
   const HomeScreen({Key? key}) : super(key: key);
 

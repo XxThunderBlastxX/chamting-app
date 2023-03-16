@@ -1,17 +1,18 @@
 import 'package:appwrite/models.dart' show Account;
-import 'package:chamting_app/src/features/authentication/domain/states/sign_up_state.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../app/errors/errors.dart';
-import '../../../providers/global_providers.dart';
 import '../../../providers/user_provider.dart';
 import '../data/auth_repository.dart';
+import '../domain/states/sign_up_state.dart';
 
 ///Signup Notifier Provider
-final signupNotifierProvider =
+final AutoDisposeStateNotifierProvider<SignUpNotifier, SignUpState>
+    signupNotifierProvider =
     StateNotifierProvider.autoDispose<SignUpNotifier, SignUpState>(
-  (ref) => SignUpNotifier(
+  (AutoDisposeStateNotifierProviderRef<SignUpNotifier, SignUpState> ref) =>
+      SignUpNotifier(
     authRepository: ref.watch(authRepositoryProvider),
     userNotifier: ref.watch(userProvider.notifier),
   ),
@@ -19,12 +20,10 @@ final signupNotifierProvider =
 
 class SignUpNotifier extends StateNotifier<SignUpState> {
   late final AuthRepository _authRepository;
-  late final UserNotifier _userNotifier;
   SignUpNotifier({
     required AuthRepository authRepository,
     required UserNotifier userNotifier,
   })  : _authRepository = authRepository,
-        _userNotifier = userNotifier,
         super(SignUpInitial());
 
   Future<void> signUpUser({
@@ -42,8 +41,8 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
     //TODO: Do some session task if it is successful
     // _userNotifier.
     response.fold(
-      (l) => state = SignUpError(l),
-      (r) => state = SignUpSuccess(r),
+      (Failure l) => state = SignUpError(l),
+      (Account r) => state = SignUpSuccess(r),
     );
   }
 

@@ -1,10 +1,12 @@
-import 'package:chamting_app/src/features/authentication/domain/models/user_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../features/authentication/domain/models/user_model.dart';
+
 /// User provider
-final userProvider = StateNotifierProvider<UserNotifier, User>(
+final StateNotifierProvider<UserNotifier, User> userProvider =
+    StateNotifierProvider<UserNotifier, User>(
   name: 'userProvider',
-  (ref) => UserNotifier(ref),
+  UserNotifier.new,
 );
 
 class UserNotifier extends StateNotifier<User> {

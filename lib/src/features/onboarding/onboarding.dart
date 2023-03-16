@@ -1,8 +1,8 @@
-import 'package:chamting_app/common/styled_button.dart';
-import 'package:chamting_app/src/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/styled_button.dart';
+import '../../app/theme/app_theme.dart';
 import '../../routes/route_names.dart';
 import '../../utils/windows_button.dart';
 
@@ -15,13 +15,13 @@ class OnBoardingScreen extends StatelessWidget {
       body: Center(
         child: SizedBox(
           child: Column(
-            children: [
+            children: <Widget>[
               const TitleBar(),
               const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  children: [
+                  children: <Widget>[
                     SizedBox(
                       width: 171.w,
                       child: Padding(
@@ -29,12 +29,12 @@ class OnBoardingScreen extends StatelessWidget {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: <Widget>[
                             RichText(
                               text: TextSpan(
-                                text: "Welcome ,\n",
+                                text: 'Welcome ,\n',
                                 style: theme.textTheme.headlineLarge,
-                                children: [
+                                children: <TextSpan>[
                                   TextSpan(
                                     text: 'to Chamting App',
                                     style: theme.textTheme.headlineLarge,
@@ -44,19 +44,19 @@ class OnBoardingScreen extends StatelessWidget {
                             ),
                             20.verticalSpace,
                             Text(
-                              "Welcome to our Windows chamting application! Our app allows you to easily connect with friends, family, and new people from around the world. ",
+                              'Welcome to our Windows chamting application! Our app allows you to easily connect with friends, family, and new people from around the world. ',
                               style: theme.textTheme.labelLarge,
                             ),
                             20.verticalSpace,
                             Text(
-                              "We hope you enjoy using our Windows chatting application! If you have any questions or need assistance, please contact our support team.",
+                              'We hope you enjoy using our Windows chatting application! If you have any questions or need assistance, please contact our support team.',
                               style: theme.textTheme.labelLarge,
                             ),
                             40.verticalSpace,
                             Center(
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: <Widget>[
                                   StyledButton(
                                     onTap: () => Navigator.pushNamed(
                                         context, AppRoute.login),

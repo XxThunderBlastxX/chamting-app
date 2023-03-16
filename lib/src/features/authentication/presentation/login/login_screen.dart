@@ -1,27 +1,27 @@
-import 'package:chamting_app/common/styled_button.dart';
-import 'package:chamting_app/src/features/authentication/app/login_notifier.dart';
-import 'package:chamting_app/src/routes/route_names.dart';
-import 'package:chamting_app/src/utils/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../../common/styled_button.dart';
 import '../../../../../common/textfield_widgets.dart';
+import '../../../../routes/route_names.dart';
+import '../../../../utils/snackbar.dart';
 import '../../../../utils/windows_button.dart';
+import '../../app/login_notifier.dart';
 import '../../domain/states/login_state.dart';
 
 class LoginScreen extends HookConsumerWidget {
   const LoginScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(loginNotifierProvider, (previous, next) {
+    ref.listen(loginNotifierProvider, (Object? previous, Object? next) {
       if (next is LoginSuccess) {
         showSnackbar(
             message: 'Logged In SuccessFully', color: Colors.green.shade400);
         Navigator.of(context).pushNamedAndRemoveUntil(
           AppRoute.home,
-          (route) => false,
+          (Route<dynamic> route) => false,
         );
       } else if (next is LoginError) {
         showSnackbar(message: next.failure.message, color: Colors.red.shade400);
@@ -29,25 +29,25 @@ class LoginScreen extends HookConsumerWidget {
         // do nothing as of now but can be used to show loading dialog
       }
     });
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
+    TextEditingController emailController = useTextEditingController();
+    TextEditingController passwordController = useTextEditingController();
     return Scaffold(
       body: Center(
         child: SizedBox(
           child: Column(
-            children: [
+            children: <Widget>[
               const TitleBar(),
               SizedBox(height: 40.h),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  children: [
+                  children: <Widget>[
                     SizedBox(
                       width: ScreenUtil().setWidth(171),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: <Widget>[
                           Text(
                             'Welcome back',
                             style: TextStyle(
@@ -59,7 +59,7 @@ class LoginScreen extends HookConsumerWidget {
                           CustomTextField(
                             controller: emailController,
                             maxLines: 1,
-                            hint: "Email",
+                            hint: 'Email',
                             suffix: const Icon(Icons.email_rounded),
                             obscure: false,
                           ),
@@ -67,7 +67,7 @@ class LoginScreen extends HookConsumerWidget {
                           CustomTextField(
                             controller: passwordController,
                             maxLines: 1,
-                            hint: "Password",
+                            hint: 'Password',
                             suffix: const Icon(Icons.lock_rounded),
                             obscure: true,
                           ),
@@ -77,7 +77,7 @@ class LoginScreen extends HookConsumerWidget {
                             width: 95.w,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
+                              children: <Widget>[
                                 Text(
                                   'Forgot password?',
                                   style: TextStyle(
@@ -107,7 +107,7 @@ class LoginScreen extends HookConsumerWidget {
                             width: 124.w,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
+                              children: <Widget>[
                                 Text(
                                   'Got an account? Register with',
                                   style: TextStyle(

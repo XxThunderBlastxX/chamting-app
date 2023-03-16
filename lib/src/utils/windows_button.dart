@@ -1,14 +1,14 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 
-final buttonColors = WindowButtonColors(
+final WindowButtonColors buttonColors = WindowButtonColors(
     iconNormal: Colors.black,
     mouseOver: Colors.grey[400],
     mouseDown: const Color(0xFF805306),
     iconMouseOver: Colors.black,
     iconMouseDown: const Color(0xFFFFD500));
 
-final closeButtonColors = WindowButtonColors(
+final WindowButtonColors closeButtonColors = WindowButtonColors(
     mouseOver: const Color(0xFFD32F2F),
     mouseDown: const Color(0xFFB71C1C),
     iconNormal: Colors.black,
@@ -18,10 +18,10 @@ class WindowButtons extends StatefulWidget {
   const WindowButtons({Key? key}) : super(key: key);
 
   @override
-  _WindowButtonsState createState() => _WindowButtonsState();
+  WindowButtonsState createState() => WindowButtonsState();
 }
 
-class _WindowButtonsState extends State<WindowButtons> {
+class WindowButtonsState extends State<WindowButtons> {
   void maximizeOrRestore() {
     setState(() {
       appWindow.maximizeOrRestore();
@@ -31,7 +31,7 @@ class _WindowButtonsState extends State<WindowButtons> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: <Widget>[
         MinimizeWindowButton(colors: buttonColors),
         appWindow.isMaximized
             ? RestoreWindowButton(
@@ -55,13 +55,13 @@ class TitleBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return WindowTitleBarBox(
       child: Row(
-        children: [
+        children: <Widget>[
           Expanded(
               child: MoveWindow(
             child: const Padding(
               padding: EdgeInsets.fromLTRB(10, 8, 3, 3),
               child: Text(
-                "Chamting-App",
+                'Chamting-App',
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
             ),

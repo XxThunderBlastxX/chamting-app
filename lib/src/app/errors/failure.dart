@@ -7,5 +7,5 @@ class Failure extends Equatable {
   const Failure({required this.message, this.code, this.stackTrace});
 
   @override
-  List<Object?> get props => [message, code, stackTrace];
+  List<Object?> get props => <Object?>[message, code, stackTrace];
 }

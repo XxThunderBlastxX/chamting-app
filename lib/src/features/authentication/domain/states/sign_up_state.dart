@@ -7,12 +7,12 @@ abstract class SignUpState extends Equatable {}
 
 class SignUpInitial extends SignUpState {
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => <Object?>[];
 }
 
 class SignUpLoading extends SignUpState {
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => <Object?>[];
 }
 
 class SignUpSuccess extends SignUpState {
@@ -20,12 +20,12 @@ class SignUpSuccess extends SignUpState {
   final String successMessage = 'Account created successfully';
   SignUpSuccess(this.account);
   @override
-  List<Object> get props => [account, successMessage];
+  List<Object> get props => <Object>[account, successMessage];
 }
 
 class SignUpError extends SignUpState {
   final Failure failure;
   SignUpError(this.failure);
   @override
-  List<Failure> get props => [failure];
+  List<Failure> get props => <Failure>[failure];
 }
